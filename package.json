@@ -1,0 +1,44 @@
+{
+  "name": "@janiscommerce/cli",
+  "version": "1.0.0",
+  "description": "A CLI application to improve JANIS development experience",
+  "main": "lib/cli.js",
+  "scripts": {
+    "test": "export TEST_ENV=true; mocha --exit -R nyan --recursive tests/",
+    "test-ci": "nyc --reporter=html --reporter=text mocha --recursive tests/",
+    "watch-test": "export TEST_ENV=true; mocha --exit -R nyan -w --recursive tests/",
+    "coverage": "nyc npm test",
+    "lint": "eslint lib/ tests/"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/janis-commerce/cli.git"
+  },
+  "bin": {
+    "janis-cli": "lib/cli.js"
+  },
+  "author": "Janis",
+  "license": "ISC",
+  "homepage": "https://github.com/janis-commerce/cli.git#readme",
+  "devDependencies": {
+    "husky": "^2.4.1",
+    "eslint": "^5.16.0",
+    "eslint-config-airbnb-base": "^13.1.0",
+    "eslint-plugin-import": "^2.17.3",
+    "mocha": "^5.2.0",
+    "nyc": "^13.1.0"
+  },
+  "files": [
+    "lib/"
+  ],
+  "directories": {
+    "test": "tests"
+  },
+  "dependencies": {
+    "fs-extra": "^8.1.0",
+    "lodash.camelcase": "^4.3.0",
+    "prompts": "^2.3.0",
+    "yamljs": "^0.3.0",
+    "yargs": "^15.0.2"
+  }
+}
