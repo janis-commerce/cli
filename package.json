@@ -36,12 +36,11 @@
   },
   "dependencies": {
     "fs-extra": "^8.1.0",
-    "lllog": "^1.1.2",
     "lodash.camelcase": "^4.3.0",
     "lodash.kebabcase": "^4.1.1",
     "lodash.startcase": "^4.4.0",
     "prompts": "^2.3.0",
     "yamljs": "^0.3.0",
-    "yargs": "^15.0.2"
+    "yargs": "^15.1.0"
   }
 }
