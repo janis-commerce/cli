@@ -1,0 +1,64 @@
+'use strict';
+
+const assert = require('assert');
+const sinon = require('sinon');
+
+const path = require('path');
+const fs = require('fs-extra');
+const childProcess = require('child_process');
+
+const {
+	writeTest,
+	getFilePath,
+	openTest
+} = require('../../lib/fs/event-listener-test');
+
+describe('FS', () => {
+
+	const cwd = '/var/www/root-path';
+
+	beforeEach(() => {
+		sinon.stub(fs);
+		sinon.stub(process, 'cwd')
+			.returns(cwd);
+	});
+
+	afterEach(() => {
+		sinon.restore();
+	});
+
+	describe('Event Listener Test', () => {
+
+		describe('writeTest()', () => {
+			it('Should write the correct file with the content', async () => {
+				await writeTest('myEntity', 'myEvent', 'content');
+
+				sinon.assert.calledOnce(fs.outputFile);
+				sinon.assert.calledWithExactly(fs.outputFile, path.join(cwd, 'tests/event-listeners', 'my-entity', 'my-event.js'), 'content');
+			});
+		});
+
+		describe('getFilePath()', () => {
+			it('Should return the correct file path', async () => {
+				const filePath = await getFilePath('myEntity', 'myEvent', 'content');
+
+				assert.strictEqual(filePath, path.join(cwd, 'tests/event-listeners', 'my-entity', 'my-event.js'));
+			});
+		});
+
+		describe('openTest()', () => {
+			it('Should open the correct file', async () => {
+
+				sinon.stub(childProcess, 'spawn');
+
+				await openTest('myEntity', 'myEvent');
+
+				sinon.assert.calledOnce(childProcess.spawn);
+				sinon.assert.calledWithExactly(childProcess.spawn, 'xdg-open', [path.join(cwd, 'tests/event-listeners', 'my-entity', 'my-event.js')], {
+					detached: true
+				});
+			});
+		});
+
+	});
+});
