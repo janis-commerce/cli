@@ -17,13 +17,18 @@ describe('FS', () => {
 
 	const cwd = '/var/www/root-path';
 
-	beforeEach(() => {
+	before(() => {
 		sinon.stub(fs);
 		sinon.stub(process, 'cwd')
 			.returns(cwd);
+		sinon.stub(childProcess, 'spawn');
 	});
 
 	afterEach(() => {
+		sinon.resetHistory();
+	});
+
+	after(() => {
 		sinon.restore();
 	});
 
@@ -49,8 +54,6 @@ describe('FS', () => {
 
 			describe('openSource()', () => {
 				it('Should open the correct file', async () => {
-
-					sinon.stub(childProcess, 'spawn');
 
 					await openSource('myEntity', 'myEvent');
 
@@ -94,8 +97,6 @@ describe('FS', () => {
 
 			describe('openSource()', () => {
 				it('Should open the correct file', async () => {
-
-					sinon.stub(childProcess, 'spawn');
 
 					await openSource('myEntity', 'myEvent');
 
