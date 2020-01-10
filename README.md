@@ -10,13 +10,38 @@ A CLI application to improve JANIS development experience
 npm install @janiscommerce/cli
 ```
 
-## API
-
-
-## Usage
-```js
-const Cli = require('@janiscommerce/cli');
-
+Or to install it globally
+```sh
+sudo npm install -g @janiscommerce/cli
 ```
 
-## Examples
+## Functionality
+Each command will create and configure all the necessary files. Then they will be opened with your preferred editor.
+
+**Important** Some properties cannot be generated automatically so they need to be adjusted manually.
+
+## Usage
+
+`janis-cli <command> [...args]`
+
+```
+Commands:
+  janis-cli create-api-get         Create a new API Get
+  janis-cli create-api-list        Create a new API List
+  janis-cli create-api-post        Create a new API Post
+  janis-cli create-api-put         Create a new API Put
+  janis-cli create-api             Create a new API
+  janis-cli create-crud            Create an entity CRUD operations
+  janis-cli create-event-listener  Create a new Event Listener
+```
+
+To get more information about command arguments, just run `janis-cli <command> --help`.
+
+Every missing argument will be prompted in an interactive way.
+
+## Example
+```bash
+$ janis-cli create-api-get -s my-service
+
+# The missing argument 'entity' will be prompted
+```
