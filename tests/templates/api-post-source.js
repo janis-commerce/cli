@@ -19,9 +19,7 @@ const { ApiSaveData } = require('@janiscommerce/api-save');
 const { struct } = require('superstruct');
 
 const mainStruct = struct.partial({
-	status: 'string',
-	dateCreated: 'string',
-	userCreated: 'string'
+	status: 'string'
 });
 
 module.exports = class ProductImagePostApi extends ApiSaveData {

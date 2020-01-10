@@ -46,15 +46,11 @@ const deleteProp = (object, prop) => {
 describe('Product Image Post Api', () => {
 
 	const productImage = {
-		status: 'active',
-		dateCreated: '2020-01-09T21:34:38.897Z',
-		userCreated: '5dea9fc691240d00084083f9'
+		status: 'active'
 	};
 
 	const productImageFormatted = {
-		status: 'active',
-		dateCreated: '2020-01-09T21:34:38.897Z',
-		userCreated: '5dea9fc691240d00084083f9'
+		status: 'active'
 	};
 
 	ApiTest(ProductImagePostApi, '/api/product-image', [
@@ -62,30 +58,6 @@ describe('Product Image Post Api', () => {
 			description: 'Should return 400 if the required field \\'status\\' is not passed',
 			request: {
 				data: deleteProp(productImage, 'status')
-			},
-			response: {
-				code: 400
-			},
-			before: sandbox => {
-				sandbox.stub(ProductImageModel.prototype);
-			}
-		},
-		{
-			description: 'Should return 400 if the required field \\'dateCreated\\' is not passed',
-			request: {
-				data: deleteProp(productImage, 'dateCreated')
-			},
-			response: {
-				code: 400
-			},
-			before: sandbox => {
-				sandbox.stub(ProductImageModel.prototype);
-			}
-		},
-		{
-			description: 'Should return 400 if the required field \\'userCreated\\' is not passed',
-			request: {
-				data: deleteProp(productImage, 'userCreated')
 			},
 			response: {
 				code: 400
