@@ -24,7 +24,8 @@ describe('Templates', () => {
 
 		it('Should return the source code as a string', () => {
 			const result = template({
-				entity: 'productImage'
+				entity: 'productImage',
+				entityPlural: 'productImages'
 			});
 
 			assert.deepStrictEqual(result, `'use strict';
@@ -32,10 +33,6 @@ describe('Templates', () => {
 const Model = require('@janiscommerce/model');
 
 module.exports = class ProductImageModel extends Model {
-
-	get databaseKey() {
-		return 'core';
-	}
 
 	static get table() {
 		return 'productImages';

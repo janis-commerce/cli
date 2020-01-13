@@ -24,7 +24,8 @@ describe('Templates', () => {
 
 		it('Should return the test source code as a string', () => {
 			const result = template({
-				entity: 'productImage'
+				entity: 'productImage',
+				entityPlural: 'productImages'
 			});
 
 			assert.deepStrictEqual(result, `'use strict';
@@ -37,8 +38,8 @@ describe('Product Image Model', () => {
 
 	describe('Getters', () => {
 
-		it('Should return the databaseKey', () => {
-			assert.deepStrictEqual(ProductImageModel.prototype.databaseKey, 'core');
+		it('Should not return any databaseKey', () => {
+			assert.deepStrictEqual(ProductImageModel.prototype.databaseKey, undefined);
 		});
 
 		it('Should return the table name', () => {

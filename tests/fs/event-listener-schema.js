@@ -32,22 +32,24 @@ describe('FS', () => {
 
 	describe('Event Listener Schema', () => {
 
+		const baseDir = 'schemas/src/public/event-listeners';
+
 		describe('writeSchema()', () => {
 			it('Should write the correct file with the content', async () => {
-				await writeSchema('myEntity', 'myEvent', 'content');
+				await writeSchema('my-service', 'my-entity', 'myEvent', 'content');
 
 				sinon.assert.calledOnce(fs.outputFile);
-				sinon.assert.calledWithExactly(fs.outputFile, path.join(cwd, 'schemas/src/public/event-listeners', 'my-entity/my-event.yml'), 'content');
+				sinon.assert.calledWithExactly(fs.outputFile, path.join(cwd, baseDir, 'my-service/my-entity/my-event.yml'), 'content');
 			});
 		});
 
 		describe('openSchema()', () => {
 			it('Should open the correct file', async () => {
 
-				await openSchema('myEntity', 'myEvent', 'content');
+				await openSchema('my-service', 'my-entity', 'myEvent', 'content');
 
 				sinon.assert.calledOnce(childProcess.spawn);
-				sinon.assert.calledWithExactly(childProcess.spawn, 'xdg-open', [path.join(cwd, 'schemas/src/public/event-listeners', 'my-entity/my-event.yml')], {
+				sinon.assert.calledWithExactly(childProcess.spawn, 'xdg-open', [path.join(cwd, baseDir, 'my-service/my-entity/my-event.yml')], {
 					detached: true
 				});
 			});

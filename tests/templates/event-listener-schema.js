@@ -9,6 +9,7 @@ describe('Templates', () => {
 
 		it('Should return the schema with required client', () => {
 			const result = template({
+				service: 'my-service',
 				entity: 'productImage',
 				event: 'created',
 				mustHaveClient: true
@@ -16,19 +17,19 @@ describe('Templates', () => {
 
 			assert.deepStrictEqual(result, {
 				paths: {
-					'/listener/product-image/created': {
+					'/listener/my-service/product-image/created': {
 						post: {
-							'x-janis-namespace': 'product-image',
+							'x-janis-namespace': 'my-service-product-image',
 							'x-janis-method': 'created-listener',
 							'x-janis-permissions': [],
-							operationId: 'productImageCreatedListener',
+							operationId: 'myServiceProductImageCreatedListener',
 							security: [{
 								ApiKey: [],
 								ApiSecret: [],
 								JanisClient: []
 							}],
 							tags: ['Event Listeners'],
-							summary: 'Product Image Created Event Listener',
+							summary: 'My Service Product Image Created Event Listener',
 							requestBody: {
 								description: 'The event',
 								required: true,
@@ -65,6 +66,7 @@ describe('Templates', () => {
 
 		it('Should return the schema without required client', () => {
 			const result = template({
+				service: 'my-service',
 				entity: 'productImage',
 				event: 'created',
 				mustHaveClient: false
@@ -72,18 +74,18 @@ describe('Templates', () => {
 
 			assert.deepStrictEqual(result, {
 				paths: {
-					'/listener/product-image/created': {
+					'/listener/my-service/product-image/created': {
 						post: {
-							'x-janis-namespace': 'product-image',
+							'x-janis-namespace': 'my-service-product-image',
 							'x-janis-method': 'created-listener',
 							'x-janis-permissions': [],
-							operationId: 'productImageCreatedListener',
+							operationId: 'myServiceProductImageCreatedListener',
 							security: [{
 								ApiKey: [],
 								ApiSecret: []
 							}],
 							tags: ['Event Listeners'],
-							summary: 'Product Image Created Event Listener',
+							summary: 'My Service Product Image Created Event Listener',
 							requestBody: {
 								description: 'The event',
 								required: true,

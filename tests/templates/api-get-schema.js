@@ -30,7 +30,7 @@ describe('Templates', () => {
 									example: 'd555345345345as67a342a'
 								},
 								required: true,
-								description: 'The entity ID'
+								description: 'The Product Image ID'
 							}],
 							responses: {
 								200: {
@@ -95,7 +95,7 @@ describe('Templates', () => {
 									example: 'd555345345345as67a342a'
 								},
 								required: true,
-								description: 'The entity ID'
+								description: 'The Product Image ID'
 							}],
 							responses: {
 								200: {

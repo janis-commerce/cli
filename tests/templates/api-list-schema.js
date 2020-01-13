@@ -10,6 +10,7 @@ describe('Templates', () => {
 		it('Should return the schema with no security', () => {
 			const result = template({
 				entity: 'productImage',
+				entityPlural: 'productImages',
 				sortableFields: ['dateCreated'],
 				availableFilters: ['id', 'status', 'userCreated']
 			});
@@ -112,6 +113,7 @@ describe('Templates', () => {
 		it('Should return the schema with security', () => {
 			const result = template({
 				entity: 'productImage',
+				entityPlural: 'productImages',
 				sortableFields: ['dateCreated'],
 				availableFilters: ['id', 'status', 'userCreated'],
 				security: [{

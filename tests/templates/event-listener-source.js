@@ -24,6 +24,7 @@ describe('Templates', () => {
 
 		it('Should return the source code as a string', () => {
 			const result = template({
+				service: 'my service',
 				entity: 'productImage',
 				event: 'created',
 				mustHaveClient: true,
@@ -39,7 +40,7 @@ const {
 
 const logger = require('lllog')();
 
-class ProductImageCreatedListener extends EventListener {
+class MyServiceProductImageCreatedListener extends EventListener {
 
 	get mustHaveClient() {
 		return true;
@@ -56,7 +57,7 @@ class ProductImageCreatedListener extends EventListener {
 
 }
 
-module.exports.handler = (...args) => ServerlessHandler.handle(ProductImageCreatedListener, ...args);
+module.exports.handler = (...args) => ServerlessHandler.handle(MyServiceProductImageCreatedListener, ...args);
 `);
 		});
 	});

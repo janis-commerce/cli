@@ -26,6 +26,7 @@ describe('Templates', () => {
 		it('Should return the test source code as a string', () => {
 			const result = template({
 				entity: 'productImage',
+				entityPlural: 'productImages',
 				fields: ['id', 'status', 'dateCreated', 'userCreated'],
 				testPath: 'productImage/get',
 				sourcePath: 'productImage/get',

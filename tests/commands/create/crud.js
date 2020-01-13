@@ -18,6 +18,8 @@ const apiGet = require('../../../lib/commands/create/api-get');
 const apiPost = require('../../../lib/commands/create/api-post');
 const apiPut = require('../../../lib/commands/create/api-put');
 
+const ReportModule = require('../../../lib/report');
+
 describe('Commands', () => {
 
 	describe('Create CRUD', () => {
@@ -30,6 +32,9 @@ describe('Commands', () => {
 
 			sinon.stub(yargs, 'option').returnsThis();
 			sinon.stub(yargs, 'help').returnsThis();
+
+			sinon.stub(ReportModule.Report, 'add');
+			sinon.stub(ReportModule.Report, 'finish');
 		});
 
 		afterEach(() => {
@@ -74,7 +79,7 @@ describe('Commands', () => {
 
 			it('Should write and open all the files', async () => {
 
-				prompts.inject(['my-service', 'productImage', [{
+				prompts.inject(['my-service', 'productImage', 'productImages', [{
 					ApiKey: [],
 					ApiSecret: []
 				}, {
@@ -86,6 +91,7 @@ describe('Commands', () => {
 				const expectedOptions = {
 					service: 'my-service',
 					entity: 'productImage',
+					entityPlural: 'productImages',
 					security: [{
 						ApiKey: [],
 						ApiSecret: [],
@@ -111,13 +117,14 @@ describe('Commands', () => {
 
 			it('Should write and open all the files (without security)', async () => {
 
-				prompts.inject(['my-service', 'productImage', [], ['id', 'status'], ['status'], ['id']]);
+				prompts.inject(['my-service', 'productImage', 'productImages', [], ['id', 'status'], ['status'], ['id']]);
 
 				await handler({});
 
 				const expectedOptions = {
 					service: 'my-service',
 					entity: 'productImage',
+					entityPlural: 'productImages',
 					security: [],
 					fields: ['id', 'status'],
 					sortableFields: ['status'],

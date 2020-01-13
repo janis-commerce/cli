@@ -35,9 +35,9 @@ describe('Templates', () => {
 
 const EventListenerTest = require('@janiscommerce/event-listener-test');
 
-const ProductImageCreatedListener = require('../../../src/event-listeners/product-image/created.js');
+const MyServiceProductImageCreatedListener = require('../../../../src/event-listeners/my-service/product-image/created.js');
 
-describe('Product Image Created Listener', async () => {
+describe('My Service Product Image Created Listener', async () => {
 
 	const validEvent = {
 		service: 'my-service',
@@ -47,7 +47,7 @@ describe('Product Image Created Listener', async () => {
 		id: '5ddd38fbfd60ad001118dbec'
 	};
 
-	await EventListenerTest(ProductImageCreatedListener.handler, [
+	await EventListenerTest(MyServiceProductImageCreatedListener.handler, [
 		{
 			description: 'Should return 400 if the event has no client',
 			session: true,
@@ -90,9 +90,9 @@ describe('Product Image Created Listener', async () => {
 
 const EventListenerTest = require('@janiscommerce/event-listener-test');
 
-const ProductImageCreatedListener = require('../../../src/event-listeners/product-image/created.js');
+const MyServiceProductImageCreatedListener = require('../../../../src/event-listeners/my-service/product-image/created.js');
 
-describe('Product Image Created Listener', async () => {
+describe('My Service Product Image Created Listener', async () => {
 
 	const validEvent = {
 		service: 'my-service',
@@ -101,7 +101,7 @@ describe('Product Image Created Listener', async () => {
 		client: 'defaultClient'
 	};
 
-	await EventListenerTest(ProductImageCreatedListener.handler, [
+	await EventListenerTest(MyServiceProductImageCreatedListener.handler, [
 		{
 			description: 'Should return 400 if the event has no client',
 			session: true,
@@ -135,9 +135,9 @@ describe('Product Image Created Listener', async () => {
 
 const EventListenerTest = require('@janiscommerce/event-listener-test');
 
-const ProductImageCreatedListener = require('../../../src/event-listeners/product-image/created.js');
+const MyServiceProductImageCreatedListener = require('../../../../src/event-listeners/my-service/product-image/created.js');
 
-describe('Product Image Created Listener', async () => {
+describe('My Service Product Image Created Listener', async () => {
 
 	const validEvent = {
 		service: 'my-service',
@@ -146,7 +146,7 @@ describe('Product Image Created Listener', async () => {
 		id: '5ddd38fbfd60ad001118dbec'
 	};
 
-	await EventListenerTest(ProductImageCreatedListener.handler, [
+	await EventListenerTest(MyServiceProductImageCreatedListener.handler, [
 		{
 			description: 'Should return 400 if the event has no ID',
 			session: false,
@@ -180,9 +180,9 @@ describe('Product Image Created Listener', async () => {
 
 const EventListenerTest = require('@janiscommerce/event-listener-test');
 
-const ProductImageCreatedListener = require('../../../src/event-listeners/product-image/created.js');
+const MyServiceProductImageCreatedListener = require('../../../../src/event-listeners/my-service/product-image/created.js');
 
-describe('Product Image Created Listener', async () => {
+describe('My Service Product Image Created Listener', async () => {
 
 	const validEvent = {
 		service: 'my-service',
@@ -190,7 +190,7 @@ describe('Product Image Created Listener', async () => {
 		event: 'created'
 	};
 
-	await EventListenerTest(ProductImageCreatedListener.handler, [
+	await EventListenerTest(MyServiceProductImageCreatedListener.handler, [
 		{
 			description: 'Should return 200 if no errors ocur',
 			session: false,

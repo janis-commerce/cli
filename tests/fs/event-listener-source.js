@@ -37,28 +37,28 @@ describe('FS', () => {
 		context('Without MS_PATH env var', () => {
 			describe('writeSource()', () => {
 				it('Should write the correct file with the content', async () => {
-					await writeSource('myEntity', 'myEvent', 'content');
+					await writeSource('my-service', 'my-entity', 'myEvent', 'content');
 
 					sinon.assert.calledOnce(fs.outputFile);
-					sinon.assert.calledWithExactly(fs.outputFile, path.join(cwd, 'event-listeners', 'my-entity', 'my-event.js'), 'content');
+					sinon.assert.calledWithExactly(fs.outputFile, path.join(cwd, 'event-listeners', 'my-service', 'my-entity', 'my-event.js'), 'content');
 				});
 			});
 
 			describe('getFilePath()', () => {
 				it('Should return the correct file path', async () => {
-					const filePath = await getFilePath('myEntity', 'myEvent', 'content');
+					const filePath = await getFilePath('my-service', 'my-entity', 'myEvent', 'content');
 
-					assert.strictEqual(filePath, path.join(cwd, 'event-listeners', 'my-entity', 'my-event.js'));
+					assert.strictEqual(filePath, path.join(cwd, 'event-listeners', 'my-service', 'my-entity', 'my-event.js'));
 				});
 			});
 
 			describe('openSource()', () => {
 				it('Should open the correct file', async () => {
 
-					await openSource('myEntity', 'myEvent');
+					await openSource('my-service', 'my-entity', 'myEvent');
 
 					sinon.assert.calledOnce(childProcess.spawn);
-					sinon.assert.calledWithExactly(childProcess.spawn, 'xdg-open', [path.join(cwd, 'event-listeners', 'my-entity', 'my-event.js')], {
+					sinon.assert.calledWithExactly(childProcess.spawn, 'xdg-open', [path.join(cwd, 'event-listeners', 'my-service', 'my-entity', 'my-event.js')], {
 						detached: true
 					});
 				});
@@ -80,28 +80,30 @@ describe('FS', () => {
 
 			describe('writeSource()', () => {
 				it('Should write the correct file with the content', async () => {
-					await writeSource('myEntity', 'myEvent', 'content');
+					await writeSource('my-service', 'my-entity', 'myEvent', 'content');
 
 					sinon.assert.calledOnce(fs.outputFile);
-					sinon.assert.calledWithExactly(fs.outputFile, path.join(cwd, 'src/event-listeners', 'my-entity', 'my-event.js'), 'content');
+					sinon.assert.calledWithExactly(fs.outputFile, path.join(cwd, 'src/event-listeners', 'my-service', 'my-entity', 'my-event.js'), 'content');
 				});
 			});
 
 			describe('getFilePath()', () => {
 				it('Should return the correct file path', async () => {
-					const filePath = await getFilePath('myEntity', 'myEvent', 'content');
+					const filePath = await getFilePath('my-service', 'my-entity', 'myEvent', 'content');
 
-					assert.strictEqual(filePath, path.join(cwd, 'src/event-listeners', 'my-entity', 'my-event.js'));
+					assert.strictEqual(filePath, path.join(cwd, 'src/event-listeners', 'my-service', 'my-entity', 'my-event.js'));
 				});
 			});
 
 			describe('openSource()', () => {
 				it('Should open the correct file', async () => {
 
-					await openSource('myEntity', 'myEvent');
+					await openSource('my-service', 'my-entity', 'myEvent');
 
 					sinon.assert.calledOnce(childProcess.spawn);
-					sinon.assert.calledWithExactly(childProcess.spawn, 'xdg-open', [path.join(cwd, 'src/event-listeners', 'my-entity', 'my-event.js')], {
+					sinon.assert.calledWithExactly(childProcess.spawn, 'xdg-open', [
+						path.join(cwd, 'src/event-listeners', 'my-service', 'my-entity', 'my-event.js')
+					], {
 						detached: true
 					});
 				});

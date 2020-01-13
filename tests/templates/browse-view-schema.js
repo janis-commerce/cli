@@ -84,11 +84,6 @@ describe('Templates', () => {
 				],
 				fields: [
 					{
-						name: 'id',
-						component: 'BoldText',
-						mapper: 'addHashtag'
-					},
-					{
 						name: 'isMain',
 						component: 'Chip',
 						mapper: 'booleanToWord'

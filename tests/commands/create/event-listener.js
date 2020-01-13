@@ -6,7 +6,6 @@ const yargs = require('yargs');
 
 const YAML = require('yamljs');
 const fs = require('fs-extra');
-const childProcess = require('child_process');
 
 const prompts = require('prompts');
 
@@ -16,6 +15,8 @@ const {
 	builder,
 	handler
 } = require('../../../lib/commands/create/event-listener');
+
+const ReportModule = require('../../../lib/report');
 
 describe('Commands', () => {
 
@@ -32,7 +33,8 @@ describe('Commands', () => {
 
 			sinon.stub(process, 'cwd').returns(cwd);
 
-			sinon.stub(childProcess, 'spawn');
+			sinon.stub(ReportModule.Report, 'add');
+			sinon.stub(ReportModule.Report, 'finish');
 		});
 
 		afterEach(() => {
@@ -89,7 +91,6 @@ describe('Commands', () => {
 				await handler({});
 
 				sinon.assert.callCount(fs.outputFile, 5);
-				sinon.assert.callCount(childProcess.spawn, 5);
 			});
 
 			it('Should open but not write existing files that should not be overriden', async () => {
@@ -103,7 +104,6 @@ describe('Commands', () => {
 				await handler({});
 
 				sinon.assert.callCount(fs.outputFile, 5);
-				sinon.assert.callCount(childProcess.spawn, 5);
 			});
 		});
 	});

@@ -26,6 +26,7 @@ describe('Templates', () => {
 		it('Should return the test source code as a string', () => {
 			const result = template({
 				entity: 'productImage',
+				entityPlural: 'productImages',
 				fields: ['id', 'status', 'dateCreated', 'userCreated'],
 				testPath: 'productImage/get',
 				sourcePath: 'productImage/get'
@@ -56,7 +57,7 @@ describe('Product Image Get Api', () => {
 
 	ApiTest(ProductImageGetApi, '/api/product-image/5dea9fc691240d00084083f8', [
 		{
-			description: 'Should fail with a 404 if no audit rules are found',
+			description: 'Should fail with a 404 if no productImages are found',
 			request: {},
 			response: {
 				code: 404

@@ -9,6 +9,7 @@ describe('Templates', () => {
 
 		it('Should return the serverless helper function hook with mandatory client', () => {
 			const result = template({
+				service: 'my-service',
 				entity: 'productImage',
 				event: 'created',
 				mustHaveClient: true
@@ -17,6 +18,7 @@ describe('Templates', () => {
 			assert.deepStrictEqual(result, [
 				'janis.eventListener',
 				{
+					serviceName: 'my-service',
 					entityName: 'product-image',
 					eventName: 'created',
 					mustHaveClient: true
@@ -26,6 +28,7 @@ describe('Templates', () => {
 
 		it('Should return the serverless helper function hook without mandatory client', () => {
 			const result = template({
+				service: 'my-service',
 				entity: 'productImage',
 				event: 'created',
 				mustHaveClient: false
@@ -34,6 +37,7 @@ describe('Templates', () => {
 			assert.deepStrictEqual(result, [
 				'janis.eventListener',
 				{
+					serviceName: 'my-service',
 					entityName: 'product-image',
 					eventName: 'created',
 					mustHaveClient: false

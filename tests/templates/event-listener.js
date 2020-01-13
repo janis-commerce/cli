@@ -24,12 +24,13 @@ describe('Templates', () => {
 
 		it('Should return the test source code as a string testing client and id', () => {
 			const result = template({
+				service: 'my-service',
 				entity: 'productImage',
 				event: 'created'
 			});
 
 			assert.deepStrictEqual(result, {
-				namespace: 'product-image',
+				namespace: 'my-service-product-image',
 				method: 'created-listener'
 			});
 		});

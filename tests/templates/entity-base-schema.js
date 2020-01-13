@@ -19,7 +19,7 @@ describe('Templates', () => {
 		it('Should return the entity base schema', () => {
 			const result = template({
 				entity: 'productImage',
-				fields: ['id', 'status', 'dateCreated', 'userCreated']
+				fields: ['id', 'someField', 'status', 'dateCreated', 'userCreated', 'dateModified', 'userModified']
 			});
 
 			assert.deepStrictEqual(result, {
@@ -31,26 +31,51 @@ describe('Templates', () => {
 							properties: {
 								id: {
 									type: 'string',
-									description: 'ADD A DESCRIPTION',
+									description: 'The Product Image ID',
 									example: '5dea9fc691240d00084083f8'
+								},
+								someField: {
+									type: 'string',
+									description: 'ADD A DESCRIPTION',
+									example: 'bar'
 								},
 								status: {
 									type: 'string',
-									description: 'ADD A DESCRIPTION',
+									description: 'The Product Image status',
 									example: 'active'
 								},
 								dateCreated: {
 									type: 'string',
-									description: 'ADD A DESCRIPTION',
+									format: 'date-time',
+									description: 'The creation date',
 									example: '2020-01-09T21:34:38.897Z'
 								},
 								userCreated: {
 									type: 'string',
-									description: 'ADD A DESCRIPTION',
+									description: 'The creation user ID',
 									example: '5dea9fc691240d00084083f9'
+								},
+								dateModified: {
+									type: 'string',
+									format: 'date-time',
+									description: 'The last modification date',
+									example: '2020-01-09T21:34:38.897Z'
+								},
+								userModified: {
+									type: 'string',
+									description: 'The last modification user ID',
+									example: '5dea9fc691240d0008408301'
 								}
 							},
-							required: ['id', 'status', 'dateCreated', 'userCreated']
+							required: [
+								'id',
+								'someField',
+								'status',
+								'dateCreated',
+								'userCreated',
+								'dateModified',
+								'userModified'
+							]
 						}
 					}
 				}

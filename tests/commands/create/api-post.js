@@ -5,7 +5,6 @@ const sinon = require('sinon');
 const yargs = require('yargs');
 
 const fs = require('fs-extra');
-const childProcess = require('child_process');
 
 const prompts = require('prompts');
 
@@ -15,6 +14,8 @@ const {
 	builder,
 	handler
 } = require('../../../lib/commands/create/api-post');
+
+const ReportModule = require('../../../lib/report');
 
 describe('Commands', () => {
 
@@ -30,7 +31,8 @@ describe('Commands', () => {
 
 			sinon.stub(process, 'cwd').returns(cwd);
 
-			sinon.stub(childProcess, 'spawn');
+			sinon.stub(ReportModule.Report, 'add');
+			sinon.stub(ReportModule.Report, 'finish');
 		});
 
 		afterEach(() => {
@@ -77,7 +79,7 @@ describe('Commands', () => {
 
 				fs.pathExists.resolves(false);
 
-				prompts.inject(['my-service', 'productImage', [{
+				prompts.inject(['my-service', 'productImage', 'productImages', [{
 					ApiKey: [],
 					ApiSecret: [],
 					JanisClient: []
@@ -87,7 +89,6 @@ describe('Commands', () => {
 
 				sinon.assert.callCount(fs.pathExists, 4);
 				sinon.assert.callCount(fs.outputFile, 7);
-				sinon.assert.callCount(childProcess.spawn, 7);
 			});
 
 			it('Should open but not write existing files that should not be overriden', async () => {
@@ -95,7 +96,7 @@ describe('Commands', () => {
 				fs.pathExists.resolves(true);
 				fs.readFile.resolves('[]');
 
-				prompts.inject(['my-service', 'productImage', [{
+				prompts.inject(['my-service', 'productImage', 'productImages', [{
 					ApiKey: [],
 					ApiSecret: [],
 					JanisClient: []
@@ -105,20 +106,18 @@ describe('Commands', () => {
 
 				sinon.assert.callCount(fs.pathExists, 4);
 				sinon.assert.callCount(fs.outputFile, 4);
-				sinon.assert.callCount(childProcess.spawn, 7);
 			});
 
 			it('Should write and open all the files (without security)', async () => {
 
 				fs.pathExists.resolves(false);
 
-				prompts.inject(['my-service', 'productImage', [], ['id', 'status']]);
+				prompts.inject(['my-service', 'productImage', 'productImages', [], ['id', 'status']]);
 
 				await handler({});
 
 				sinon.assert.callCount(fs.pathExists, 4);
 				sinon.assert.callCount(fs.outputFile, 7);
-				sinon.assert.callCount(childProcess.spawn, 7);
 			});
 		});
 	});

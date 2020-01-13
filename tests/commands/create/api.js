@@ -5,7 +5,6 @@ const sinon = require('sinon');
 const yargs = require('yargs');
 
 const fs = require('fs-extra');
-const childProcess = require('child_process');
 
 const prompts = require('prompts');
 
@@ -15,6 +14,8 @@ const {
 	builder,
 	handler
 } = require('../../../lib/commands/create/api');
+
+const ReportModule = require('../../../lib/report');
 
 describe('Commands', () => {
 
@@ -30,7 +31,8 @@ describe('Commands', () => {
 
 			sinon.stub(process, 'cwd').returns(cwd);
 
-			sinon.stub(childProcess, 'spawn');
+			sinon.stub(ReportModule.Report, 'add');
+			sinon.stub(ReportModule.Report, 'finish');
 		});
 
 		afterEach(() => {
@@ -94,7 +96,6 @@ describe('Commands', () => {
 				await handler({});
 
 				sinon.assert.callCount(fs.outputFile, 3);
-				sinon.assert.callCount(childProcess.spawn, 3);
 			});
 
 			it('Should write and open all the files (without security)', async () => {
@@ -104,7 +105,6 @@ describe('Commands', () => {
 				await handler({});
 
 				sinon.assert.callCount(fs.outputFile, 3);
-				sinon.assert.callCount(childProcess.spawn, 3);
 			});
 
 			it('Should write and open all the files (with path params)', async () => {
@@ -114,7 +114,6 @@ describe('Commands', () => {
 				await handler({});
 
 				sinon.assert.callCount(fs.outputFile, 3);
-				sinon.assert.callCount(childProcess.spawn, 3);
 			});
 		});
 	});
