@@ -95,7 +95,7 @@ describe('Commands', () => {
 
 				await handler({});
 
-				sinon.assert.callCount(fs.outputFile, 3);
+				sinon.assert.callCount(fs.outputFile, 4);
 			});
 
 			it('Should write and open all the files (without security)', async () => {
@@ -104,7 +104,7 @@ describe('Commands', () => {
 
 				await handler({});
 
-				sinon.assert.callCount(fs.outputFile, 3);
+				sinon.assert.callCount(fs.outputFile, 4);
 			});
 
 			it('Should write and open all the files (with path params)', async () => {
@@ -113,7 +113,7 @@ describe('Commands', () => {
 
 				await handler({});
 
-				sinon.assert.callCount(fs.outputFile, 3);
+				sinon.assert.callCount(fs.outputFile, 4);
 			});
 		});
 	});

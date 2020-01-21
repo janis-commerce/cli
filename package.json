@@ -44,5 +44,8 @@
     "prompts": "^2.3.0",
     "yamljs": "^0.3.0",
     "yargs": "^15.1.0"
+  },
+  "peerDependencies": {
+    "sls-helper-plugin-janis": "^1.3.0"
   }
 }
