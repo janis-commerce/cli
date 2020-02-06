@@ -7,6 +7,10 @@ and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.
 
 ## [Unreleased]
 
+## [1.1.1] - 2020-02-06
+### Fixed
+- Now event-listeners entity and event are in dash case
+
 ## [1.1.0] - 2020-01-21
 ### Added
 - `create-api` command added
