@@ -12,7 +12,7 @@ describe('Templates', () => {
 				entity: 'productImage',
 				entityPlural: 'productImages',
 				sortableFields: ['dateCreated'],
-				availableFilters: ['id', 'status', 'userCreated', 'dateCreated']
+				availableFilters: ['id', 'isDefault', 'status', 'userCreated', 'dateCreated']
 			});
 
 			assert.deepStrictEqual(result, {
@@ -94,6 +94,10 @@ describe('Templates', () => {
 										type: 'string',
 										description: 'The Product Image ID'
 									},
+									isDefault: {
+										type: 'boolean',
+										description: 'ADD A DESCRIPTION'
+									},
 									status: {
 										type: 'string',
 										description: 'The Product Image status',
@@ -121,7 +125,7 @@ describe('Templates', () => {
 				entity: 'productImage',
 				entityPlural: 'productImages',
 				sortableFields: ['dateCreated'],
-				availableFilters: ['id', 'status', 'userCreated', 'dateCreated'],
+				availableFilters: ['id', 'isDefault', 'status', 'userCreated', 'dateCreated'],
 				security: [{
 					ApiKey: [],
 					ApiSecret: [],
@@ -212,6 +216,10 @@ describe('Templates', () => {
 									id: {
 										type: 'string',
 										description: 'The Product Image ID'
+									},
+									isDefault: {
+										type: 'boolean',
+										description: 'ADD A DESCRIPTION'
 									},
 									status: {
 										type: 'string',
