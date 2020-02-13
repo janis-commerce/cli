@@ -12,7 +12,7 @@ describe('Templates', () => {
 				entity: 'productImage',
 				entityPlural: 'productImages',
 				sortableFields: ['dateCreated'],
-				availableFilters: ['id', 'status', 'userCreated']
+				availableFilters: ['id', 'status', 'userCreated', 'dateCreated']
 			});
 
 			assert.deepStrictEqual(result, {
@@ -92,15 +92,21 @@ describe('Templates', () => {
 								properties: {
 									id: {
 										type: 'string',
-										description: 'ADD FILTER DESCRIPTION'
+										description: 'The Product Image ID'
 									},
 									status: {
 										type: 'string',
-										description: 'ADD FILTER DESCRIPTION'
+										description: 'The Product Image status',
+										enum: ['active', 'inactive']
 									},
 									userCreated: {
 										type: 'string',
-										description: 'ADD FILTER DESCRIPTION'
+										description: 'The creation user ID'
+									},
+									dateCreated: {
+										type: 'string',
+										format: 'date-time',
+										description: 'The creation date'
 									}
 								}
 							}
@@ -115,7 +121,7 @@ describe('Templates', () => {
 				entity: 'productImage',
 				entityPlural: 'productImages',
 				sortableFields: ['dateCreated'],
-				availableFilters: ['id', 'status', 'userCreated'],
+				availableFilters: ['id', 'status', 'userCreated', 'dateCreated'],
 				security: [{
 					ApiKey: [],
 					ApiSecret: [],
@@ -205,15 +211,21 @@ describe('Templates', () => {
 								properties: {
 									id: {
 										type: 'string',
-										description: 'ADD FILTER DESCRIPTION'
+										description: 'The Product Image ID'
 									},
 									status: {
 										type: 'string',
-										description: 'ADD FILTER DESCRIPTION'
+										description: 'The Product Image status',
+										enum: ['active', 'inactive']
 									},
 									userCreated: {
 										type: 'string',
-										description: 'ADD FILTER DESCRIPTION'
+										description: 'The creation user ID'
+									},
+									dateCreated: {
+										type: 'string',
+										format: 'date-time',
+										description: 'The creation date'
 									}
 								}
 							}

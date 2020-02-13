@@ -68,11 +68,11 @@ describe('Utils', () => {
 		});
 
 		it('Should return a boolean for a field starting with \'is\'', () => {
-			assert.strictEqual(getFieldSampleValue('isSomething'), 'true');
+			assert.strictEqual(getFieldSampleValue('isSomething'), true);
 		});
 
 		it('Should return a boolean for a field starting with \'has\'', () => {
-			assert.strictEqual(getFieldSampleValue('hasSomething'), 'true');
+			assert.strictEqual(getFieldSampleValue('hasSomething'), true);
 		});
 
 		it('Should return a a fixed value \'bar\' for every other field', () => {
