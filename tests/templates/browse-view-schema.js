@@ -44,11 +44,33 @@ describe('Templates', () => {
 					},
 					{
 						name: 'isMain',
-						component: 'Input'
+						component: 'Select',
+						componentAttributes: {
+							translateLabels: false,
+							labelPrefix: 'common.boolean.',
+							options: {
+								scope: 'local',
+								values: [
+									{ label: 1, value: 'true' },
+									{ label: 0, value: 'false' }
+								]
+							}
+						}
 					},
 					{
 						name: 'hasTags',
-						component: 'Input'
+						component: 'Select',
+						componentAttributes: {
+							translateLabels: false,
+							labelPrefix: 'common.boolean.',
+							options: {
+								scope: 'local',
+								values: [
+									{ label: 1, value: 'true' },
+									{ label: 0, value: 'false' }
+								]
+							}
+						}
 					},
 					{
 						name: 'status',
