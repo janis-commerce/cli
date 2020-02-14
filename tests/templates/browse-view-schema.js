@@ -46,13 +46,13 @@ describe('Templates', () => {
 						name: 'isMain',
 						component: 'Select',
 						componentAttributes: {
-							translateLabels: false,
+							translateLabels: true,
 							labelPrefix: 'common.boolean.',
 							options: {
 								scope: 'local',
 								values: [
-									{ label: 1, value: 'true' },
-									{ label: 0, value: 'false' }
+									{ label: 'yes', value: 1 },
+									{ label: 'no', value: 0 }
 								]
 							}
 						}
@@ -61,13 +61,13 @@ describe('Templates', () => {
 						name: 'hasTags',
 						component: 'Select',
 						componentAttributes: {
-							translateLabels: false,
+							translateLabels: true,
 							labelPrefix: 'common.boolean.',
 							options: {
 								scope: 'local',
 								values: [
-									{ label: 1, value: 'true' },
-									{ label: 0, value: 'false' }
+									{ label: 'yes', value: 1 },
+									{ label: 'no', value: 0 }
 								]
 							}
 						}
@@ -97,7 +97,10 @@ describe('Templates', () => {
 								},
 								searchParam: 'filters[name]',
 								valuesMapper: {
-									label: 'name',
+									label: {
+										template: '{0} {1}',
+										fields: ['firstname', 'lastname']
+									},
 									value: 'id'
 								}
 							}

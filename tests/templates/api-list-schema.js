@@ -12,7 +12,7 @@ describe('Templates', () => {
 				entity: 'productImage',
 				entityPlural: 'productImages',
 				sortableFields: ['dateCreated'],
-				availableFilters: ['id', 'isDefault', 'status', 'userCreated', 'dateCreated']
+				availableFilters: ['id', 'isDefault', 'qty', 'status', 'userCreated', 'dateCreated']
 			});
 
 			assert.deepStrictEqual(result, {
@@ -96,6 +96,10 @@ describe('Templates', () => {
 									},
 									isDefault: {
 										type: 'boolean',
+										description: 'ADD A DESCRIPTION'
+									},
+									qty: {
+										type: 'number',
 										description: 'ADD A DESCRIPTION'
 									},
 									status: {
