@@ -19,7 +19,7 @@ describe('Templates', () => {
 		it('Should return the entity base schema', () => {
 			const result = template({
 				entity: 'productImage',
-				fields: ['id', 'someField', 'isDefault', 'hasEntity', 'status', 'dateCreated', 'userCreated', 'dateModified', 'userModified']
+				fields: ['id', 'someField', 'isDefault', 'qty', 'hasEntity', 'status', 'dateCreated', 'userCreated', 'dateModified', 'userModified']
 			});
 
 			assert.deepStrictEqual(result, {
@@ -44,6 +44,11 @@ describe('Templates', () => {
 									type: 'boolean',
 									description: 'ADD A DESCRIPTION',
 									example: true
+								},
+								qty: {
+									type: 'number',
+									description: 'ADD A DESCRIPTION',
+									example: 10
 								},
 								hasEntity: {
 									type: 'boolean',
@@ -90,6 +95,7 @@ describe('Templates', () => {
 								'id',
 								'someField',
 								'isDefault',
+								'qty',
 								'hasEntity',
 								'status',
 								'dateCreated',
