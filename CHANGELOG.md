@@ -7,6 +7,17 @@ and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.
 
 ## [Unreleased]
 
+## [1.2.0] - 2020-02-14
+### Added
+- Read only properties in API Schemas
+- `status` enum
+- Templated user filter
+- Boolean filters in browses
+
+### Changed
+- API Schema types are now more accurate
+- Examples are now more accurate
+
 ## [1.1.1] - 2020-02-06
 ### Fixed
 - Now event-listeners entity and event are in dash case
