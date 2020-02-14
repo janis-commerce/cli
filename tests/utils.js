@@ -68,11 +68,11 @@ describe('Utils', () => {
 		});
 
 		it('Should return a boolean for a field starting with \'is\'', () => {
-			assert.strictEqual(getFieldSampleValue('isSomething'), 'true');
+			assert.strictEqual(getFieldSampleValue('isSomething'), true);
 		});
 
 		it('Should return a boolean for a field starting with \'has\'', () => {
-			assert.strictEqual(getFieldSampleValue('hasSomething'), 'true');
+			assert.strictEqual(getFieldSampleValue('hasSomething'), true);
 		});
 
 		it('Should return a a fixed value \'bar\' for every other field', () => {
@@ -83,23 +83,23 @@ describe('Utils', () => {
 	describe('getFieldSampleStruct()', () => {
 
 		it('Should return boolean struct for a field starting with \'is\'', () => {
-			assert.strictEqual(getFieldSampleStruct('isSomething'), '\'boolean\'');
+			assert.strictEqual(getFieldSampleStruct('isSomething'), 'boolean');
 		});
 
 		it('Should return boolean struct for a field starting with \'has\'', () => {
-			assert.strictEqual(getFieldSampleStruct('hasSomething'), '\'boolean\'');
+			assert.strictEqual(getFieldSampleStruct('hasSomething'), 'boolean');
 		});
 
 		it('Should return number struct for a field containing \'qty\'', () => {
-			assert.strictEqual(getFieldSampleStruct('productQty'), '\'number\'');
+			assert.strictEqual(getFieldSampleStruct('productQty'), 'number');
 		});
 
 		it('Should return number struct for a field containing \'quantity\'', () => {
-			assert.strictEqual(getFieldSampleStruct('quantityPicked'), '\'number\'');
+			assert.strictEqual(getFieldSampleStruct('quantityPicked'), 'number');
 		});
 
 		it('Should return string struct for every other field', () => {
-			assert.strictEqual(getFieldSampleStruct('unknown'), '\'string\'');
+			assert.strictEqual(getFieldSampleStruct('unknown'), 'string');
 		});
 	});
 

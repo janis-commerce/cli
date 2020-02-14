@@ -47,10 +47,8 @@ describe('Product Image Model', () => {
 		});
 
 		it('Should return the uniqueIndexes', async () => {
-
 			assert.deepStrictEqual(ProductImageModel.uniqueIndexes, []);
 		});
-
 	});
 });
 `);
