@@ -16,7 +16,7 @@ describe('Templates', () => {
 			assert.deepStrictEqual(result, `'use strict';
 
 const { ApiSaveData } = require('@janiscommerce/api-save');
-const { struct } = require('superstruct');
+const { struct } = require('@janiscommerce/superstruct');
 
 const mainStruct = struct.partial({
 	status: 'string'
