@@ -32,7 +32,7 @@ describe('Templates', () => {
 
 const assert = require('assert');
 
-const ProductImageModel = require('../../src/models/product-image.js');
+const ProductImageModel = require('../../src/models/product-image');
 
 describe('Product Image Model', () => {
 
