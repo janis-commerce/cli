@@ -102,26 +102,7 @@ describe('Templates', () => {
 					},
 					{
 						name: 'userCreated',
-						component: 'Select',
-						componentAttributes: {
-							translateLabels: false,
-							options: {
-								scope: 'remote',
-								endpoint: {
-									service: 'id',
-									namespace: 'user',
-									method: 'list'
-								},
-								searchParam: 'filters[name]',
-								valuesMapper: {
-									label: {
-										template: '{0} {1}',
-										fields: ['firstname', 'lastname']
-									},
-									value: 'id'
-								}
-							}
-						}
+						component: 'UserSelector'
 					}
 				],
 				fields: [
