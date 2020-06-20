@@ -49,6 +49,19 @@ describe('Templates', () => {
 									component: 'Input'
 								},
 								{
+									name: 'dateOfSomething',
+									component: 'DateTimePicker',
+									componentAttributes: {
+										selectDate: true
+									}
+								}
+							]
+						},
+						{
+							name: 'others',
+							position: 'right',
+							fields: [
+								{
 									name: 'status',
 									component: 'Select',
 									componentAttributes: {
@@ -67,13 +80,6 @@ describe('Templates', () => {
 												}
 											]
 										}
-									}
-								},
-								{
-									name: 'dateOfSomething',
-									component: 'DateTimePicker',
-									componentAttributes: {
-										selectDate: true
 									}
 								}
 							]

@@ -74,7 +74,24 @@ describe('Templates', () => {
 					},
 					{
 						name: 'status',
-						component: 'Input'
+						component: 'Select',
+						componentAttributes: {
+							labelPrefix: 'common.status.',
+							translateLabels: true,
+							options: {
+								scope: 'local',
+								values: [
+									{
+										label: 'active',
+										value: 'active'
+									},
+									{
+										label: 'inactive',
+										value: 'inactive'
+									}
+								]
+							}
+						}
 					},
 					{
 						name: 'dateCreated',
@@ -85,26 +102,7 @@ describe('Templates', () => {
 					},
 					{
 						name: 'userCreated',
-						component: 'Select',
-						componentAttributes: {
-							translateLabels: false,
-							options: {
-								scope: 'remote',
-								endpoint: {
-									service: 'id',
-									namespace: 'user',
-									method: 'list'
-								},
-								searchParam: 'filters[name]',
-								valuesMapper: {
-									label: {
-										template: '{0} {1}',
-										fields: ['firstname', 'lastname']
-									},
-									value: 'id'
-								}
-							}
-						}
+						component: 'UserSelector'
 					}
 				],
 				fields: [
@@ -136,32 +134,7 @@ describe('Templates', () => {
 					},
 					{
 						name: 'userCreated',
-						component: 'AsyncWrapper',
-						componentAttributes: {
-							source: {
-								service: 'id',
-								namespace: 'user',
-								method: 'list'
-							},
-							dataMapping: {
-								firstname: 'userCreatedData.firstname',
-								lastname: 'userCreatedData.lastname',
-								email: 'userCreatedData.email',
-								'images.thumbnail': 'userCreatedData.image'
-							},
-							field: {
-								name: 'user',
-								component: 'UserChip',
-								componentAttributes: {
-									userDataSource: {
-										firstname: 'userCreatedData.firstname',
-										lastname: 'userCreatedData.lastname',
-										email: 'userCreatedData.email',
-										image: 'userCreatedData.image'
-									}
-								}
-							}
-						}
+						component: 'AsyncUserChip'
 					}
 				]
 			});

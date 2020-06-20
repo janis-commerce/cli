@@ -109,9 +109,9 @@ describe('Product Image List Api', () => {
 	describe('Filtering', () => {
 
 		const filters = [
-			['id', 'foo', 'foo', 'id'],
-			['status', 'foo', 'foo', 'status'],
-			['userCreated', 'foo', 'foo', 'userCreated']
+			['id', '5dea9fc691240d00084083f8', '5dea9fc691240d00084083f8', 'id'],
+			['status', 'active', 'active', 'status'],
+			['userCreated', '5dea9fc691240d00084083f9', '5dea9fc691240d00084083f9', 'userCreated']
 		];
 
 		ApiTest(ProductImageListApi, '/api/product-image', filters.map(([field, data, queryValue, internalName]) => ({
