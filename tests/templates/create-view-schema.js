@@ -11,6 +11,56 @@ describe('Templates', () => {
 			const result = template({
 				service: 'my-service',
 				entity: 'productImage',
+				fields: ['id', 'isMain', 'hasTags', 'normalField', 'dateOfSomething', 'dateCreated', 'userCreated', 'dateModified', 'userModified']
+			});
+
+			assert.deepStrictEqual(result, {
+				service: 'my-service',
+				root: 'Create',
+				name: 'product-image-create',
+				target: {
+					service: 'my-service',
+					namespace: 'product-image',
+					method: 'create'
+				},
+				sections: [
+					{
+						name: 'mainFormSection',
+						rootComponent: 'MainForm',
+						fieldsGroup: [{
+							name: 'detail',
+							icon: 'catalogue',
+							fields: [
+								{
+									name: 'isMain',
+									component: 'Switch'
+								},
+								{
+									name: 'hasTags',
+									component: 'Switch'
+								},
+								{
+									name: 'normalField',
+									component: 'Input'
+								},
+								{
+									name: 'dateOfSomething',
+									component: 'DateTimePicker',
+									componentAttributes: {
+										selectDate: true
+									}
+								}
+							]
+						}]
+					}
+				]
+			});
+		});
+
+		it('Should return the schema with the best configuration possible (with others fieldsGroup)', () => {
+			const result = template({
+				service: 'my-service',
+				entity: 'productImage',
 				fields: ['id', 'isMain', 'hasTags', 'normalField', 'status', 'dateOfSomething', 'dateCreated', 'userCreated', 'dateModified', 'userModified']
 			});
 
