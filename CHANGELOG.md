@@ -7,6 +7,18 @@ and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.
 
 ## [Unreleased]
 
+## [1.3.0] - 2020-06-20
+### Added
+- `AsyncUserChip` and `UserSelector` compatibility added
+
+### Changed
+- Filter and form field for `status` improved
+- Changed `superstruct` dependency to `@janiscommerce/superstruct`
+
+### Fixed
+- Models names are not suffixed with 'Model' any more
+- Model test doesn't require the model with extension any more
+
 ## [1.2.0] - 2020-02-14
 ### Added
 - Read only properties in API Schemas
