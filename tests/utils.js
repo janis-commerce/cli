@@ -9,7 +9,8 @@ const {
 	getFieldSampleValue,
 	getFieldSampleStruct,
 	ensureOptions,
-	getValidationTestCase
+	getValidationTestCase,
+	notEmpty
 } = require('../lib/utils');
 
 describe('Utils', () => {
@@ -233,4 +234,14 @@ describe('Utils', () => {
 		});
 	});
 
+	describe('notEmpty', () => {
+
+		it('Should return `true` if the string is not empty', () => {
+			assert.strictEqual(notEmpty('product'), true);
+		});
+
+		it('Should return `false` if the string is empty', () => {
+			assert.strictEqual(notEmpty(''), false);
+		});
+	});
 });

@@ -7,6 +7,11 @@ and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.
 
 ## [Unreleased]
 
+## [1.4.0] - 2020-07-28
+### Added
+- Added prompt 'Should add view-schemas' for `api-list`, `api-post`, `api-put` and `crud`
+- Improoved lib organization with separated prompt files
+
 ## [1.3.0] - 2020-06-20
 ### Added
 - `AsyncUserChip` and `UserSelector` compatibility added
