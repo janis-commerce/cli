@@ -10,7 +10,8 @@ const {
 	getFieldSampleStruct,
 	ensureOptions,
 	getValidationTestCase,
-	notEmpty
+	notEmpty,
+	areLettersAndNumbers
 } = require('../lib/utils');
 
 describe('Utils', () => {
@@ -242,6 +243,19 @@ describe('Utils', () => {
 
 		it('Should return `false` if the string is empty', () => {
 			assert.strictEqual(notEmpty(''), false);
+		});
+	});
+
+	describe('areLettersAndNumbers', () => {
+
+		it('Should return `true` if the string contains only letters and numbers', () => {
+			assert.strictEqual(areLettersAndNumbers('product'), true);
+			assert.strictEqual(areLettersAndNumbers('product24'), true);
+			assert.strictEqual(areLettersAndNumbers('90sku'), true);
+		});
+
+		it('Should return `false` if the string contains other characters than only letters and numbers', () => {
+			assert.strictEqual(areLettersAndNumbers('product9.other$-chars'), false);
 		});
 	});
 });
