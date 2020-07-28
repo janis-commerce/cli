@@ -84,7 +84,9 @@ describe('Commands', () => {
 					ApiSecret: []
 				}, {
 					JanisClient: []
-				}], ['id', 'status'], ['status'], ['id']]);
+				}], ['id', 'status'], ['status'], ['id'],
+				true
+				]);
 
 				await handler({});
 
@@ -99,7 +101,8 @@ describe('Commands', () => {
 					}],
 					fields: ['id', 'status'],
 					sortableFields: ['status'],
-					availableFilters: ['id']
+					availableFilters: ['id'],
+					addViews: true
 				};
 
 				sinon.assert.calledOnce(apiList.handler);
@@ -117,7 +120,7 @@ describe('Commands', () => {
 
 			it('Should write and open all the files (without security)', async () => {
 
-				prompts.inject(['my-service', 'productImage', 'productImages', [], ['id', 'status'], ['status'], ['id']]);
+				prompts.inject(['my-service', 'productImage', 'productImages', [], ['id', 'status'], ['status'], ['id'], false]);
 
 				await handler({});
 
@@ -128,7 +131,8 @@ describe('Commands', () => {
 					security: [],
 					fields: ['id', 'status'],
 					sortableFields: ['status'],
-					availableFilters: ['id']
+					availableFilters: ['id'],
+					addViews: false
 				};
 
 				sinon.assert.calledOnce(apiList.handler);

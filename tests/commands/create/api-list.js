@@ -88,7 +88,7 @@ describe('Commands', () => {
 				await handler({});
 
 				sinon.assert.callCount(fs.pathExists, 4);
-				sinon.assert.callCount(fs.outputFile, 8);
+				sinon.assert.callCount(fs.outputFile, 7);
 			});
 
 			it('Should open but not write existing files that should not be overriden', async () => {
@@ -105,7 +105,7 @@ describe('Commands', () => {
 				await handler({});
 
 				sinon.assert.callCount(fs.pathExists, 4);
-				sinon.assert.callCount(fs.outputFile, 5);
+				sinon.assert.callCount(fs.outputFile, 4);
 			});
 
 			it('Should write and open all the files (without security)', async () => {
@@ -117,7 +117,7 @@ describe('Commands', () => {
 				await handler({});
 
 				sinon.assert.callCount(fs.pathExists, 4);
-				sinon.assert.callCount(fs.outputFile, 8);
+				sinon.assert.callCount(fs.outputFile, 7);
 			});
 		});
 	});
