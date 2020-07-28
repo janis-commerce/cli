@@ -119,6 +119,24 @@ describe('Commands', () => {
 				sinon.assert.callCount(fs.pathExists, 4);
 				sinon.assert.callCount(fs.outputFile, 7);
 			});
+
+			it('Should write and open all the files (with view-schemas)', async () => {
+
+				fs.pathExists.resolves(false);
+
+				const addViewsOption = true;
+
+				prompts.inject(['my-service', 'productImage', 'productImages', [{
+					ApiKey: [],
+					ApiSecret: [],
+					JanisClient: []
+				}], ['id', 'status'], addViewsOption]);
+
+				await handler({});
+
+				sinon.assert.callCount(fs.pathExists, 5);
+				sinon.assert.callCount(fs.outputFile, 8);
+			});
 		});
 	});
 });

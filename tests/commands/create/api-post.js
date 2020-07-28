@@ -134,7 +134,7 @@ describe('Commands', () => {
 
 				await handler({});
 
-				sinon.assert.callCount(fs.pathExists, 4);
+				sinon.assert.callCount(fs.pathExists, 5);
 				sinon.assert.callCount(fs.outputFile, 8);
 			});
 		});
