@@ -11,7 +11,19 @@ describe('Templates', () => {
 			const result = template({
 				service: 'my-service',
 				entity: 'productImage',
-				fields: ['id', 'isMain', 'hasTags', 'normalField', 'status', 'dateOfSomething', 'dateCreated', 'userCreated', 'dateModified', 'userModified']
+				fields: [
+					'id',
+					'isMain',
+					'hasTags',
+					'itemsQuantity',
+					'normalField',
+					'status',
+					'dateOfSomething',
+					'dateCreated',
+					'userCreated',
+					'dateModified',
+					'userModified'
+				]
 			});
 
 			assert.deepStrictEqual(result, {
@@ -43,6 +55,13 @@ describe('Templates', () => {
 								{
 									name: 'hasTags',
 									component: 'Switch'
+								},
+								{
+									name: 'itemsQuantity',
+									component: 'Input',
+									componentAttributes: {
+										type: 'number'
+									}
 								},
 								{
 									name: 'normalField',
