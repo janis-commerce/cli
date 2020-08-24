@@ -27,11 +27,11 @@ describe('Templates', () => {
 			const result = template({
 				entity: 'productImage',
 				entityPlural: 'productImages',
-				fields: ['id', 'status', 'dateCreated', 'userCreated'],
+				fields: ['id', 'name', 'hasHeight', 'itemsQuantity', 'status', 'dateCreated', 'userCreated'],
 				testPath: 'productImage/get',
 				sourcePath: 'productImage/get',
 				sortableFields: ['dateCreated'],
-				availableFilters: ['id', 'status', 'userCreated']
+				availableFilters: ['id', 'name', 'hasHeight', 'itemsQuantity', 'status', 'dateCreated', 'userCreated']
 			});
 
 			assert.deepStrictEqual(result, `'use strict';
@@ -45,6 +45,9 @@ describe('Product Image List Api', () => {
 
 	const productImage = {
 		id: '5dea9fc691240d00084083f8',
+		name: 'bar',
+		hasHeight: true,
+		itemsQuantity: 10,
 		status: 'active',
 		dateCreated: '2020-01-09T21:34:38.897Z',
 		userCreated: '5dea9fc691240d00084083f9'
@@ -52,6 +55,9 @@ describe('Product Image List Api', () => {
 
 	const productImageFormatted = {
 		id: '5dea9fc691240d00084083f8',
+		name: 'bar',
+		hasHeight: true,
+		itemsQuantity: 10,
 		status: 'active',
 		dateCreated: '2020-01-09T21:34:38.897Z',
 		userCreated: '5dea9fc691240d00084083f9'
@@ -110,7 +116,15 @@ describe('Product Image List Api', () => {
 
 		const filters = [
 			['id', '5dea9fc691240d00084083f8', '5dea9fc691240d00084083f8', 'id'],
+			['name', 'bar', 'bar', 'name'],
+			['hasHeight', '1', true, 'hasHeight'],
+			['hasHeight', 'true', true, 'hasHeight'],
+			['hasHeight', '0', false, 'hasHeight'],
+			['hasHeight', 'false', false, 'hasHeight'],
+			['itemsQuantity', '10', 10, 'itemsQuantity'],
+			['itemsQuantity', 10, 10, 'itemsQuantity'],
 			['status', 'active', 'active', 'status'],
+			['dateCreated', '2020-08-24T22:11:00.000Z', new Date('2020-08-24T22:11:00.000Z'), 'dateCreated'],
 			['userCreated', '5dea9fc691240d00084083f9', '5dea9fc691240d00084083f9', 'userCreated']
 		];
 
