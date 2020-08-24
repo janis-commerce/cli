@@ -2,6 +2,7 @@
 
 [![Build Status](https://travis-ci.org/janis-commerce/cli.svg?branch=master)](https://travis-ci.org/janis-commerce/cli)
 [![Coverage Status](https://coveralls.io/repos/github/janis-commerce/cli/badge.svg?branch=master)](https://coveralls.io/github/janis-commerce/cli?branch=master)
+[![npm version](https://badge.fury.io/js/%40janiscommerce%2Fcli.svg)](https://www.npmjs.com/package/@janiscommerce/cli)
 
 A CLI application to improve JANIS development experience
 
