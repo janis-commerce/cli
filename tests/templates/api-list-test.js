@@ -116,7 +116,7 @@ describe('Product Image List Api', () => {
 
 		const filters = [
 			['id', '5dea9fc691240d00084083f8', '5dea9fc691240d00084083f8', 'id'],
-			['name', 'bar', 'bar', 'name'],
+			['name', 'bar', { value: 'bar', type: 'search' }, 'name'],
 			['hasHeight', '1', true, 'hasHeight'],
 			['hasHeight', 'true', true, 'hasHeight'],
 			['hasHeight', '0', false, 'hasHeight'],
