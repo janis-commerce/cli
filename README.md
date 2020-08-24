@@ -12,7 +12,7 @@ npm install @janiscommerce/cli
 
 Or to install it globally
 ```sh
-sudo npm install -g @janiscommerce/cli
+npm install -g @janiscommerce/cli
 ```
 
 ## Functionality
