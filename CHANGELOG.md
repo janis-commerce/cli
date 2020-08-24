@@ -6,10 +6,22 @@ The format is based on [Keep a Changelog](http://keepachangelog.com/en/1.0.0/)
 and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.html).
 
 ## [Unreleased]
+### Added
+- Cross platform compatibility for opening files in mac
+- API List filters will now have valueMappers
+- Npm version badge added to Readme
+- Numeric fields now have `type: number` set in Create and Edit schemas
+
+### Changed
+- API List filtering cases improved
+- `sandbox` renamed to `sinon` in every test
+
 ### Fixed
 - CLI arguments are now properly integrated
 - View schemas are now reported with file extension
 - Form field `status` has now a default value of `'active'`
+- Performance improvements
+- Documentation now mentions `MS_PATH` env var
 
 ## [1.4.1] - 2020-08-24
 ### Changed
