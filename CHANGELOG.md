@@ -9,6 +9,7 @@ and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.
 ### Fixed
 - CLI arguments are now properly integrated
 - View schemas are now reported with file extension
+- Form field `status` has now a default value of `'active'`
 
 ## [1.4.1] - 2020-08-24
 ### Changed

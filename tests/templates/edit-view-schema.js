@@ -64,6 +64,7 @@ describe('Templates', () => {
 								{
 									name: 'status',
 									component: 'Select',
+									defaultValue: 'active',
 									componentAttributes: {
 										labelPrefix: 'common.status.',
 										translateLabels: true,
