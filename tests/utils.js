@@ -116,8 +116,8 @@ describe('Utils', () => {
 			response: {
 				code: 400
 			},
-			before: sandbox => {
-				sandbox.stub(myModelName.prototype);
+			before: sinon => {
+				sinon.stub(myModelName.prototype);
 			}
 		},`);
 		});

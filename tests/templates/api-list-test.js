@@ -68,13 +68,13 @@ describe('Product Image List Api', () => {
 			description: 'Should pass the correct params to the model',
 			request: {},
 			response: {},
-			before: sandbox => {
-				sandbox.stub(ProductImageModel.prototype, 'get');
+			before: sinon => {
+				sinon.stub(ProductImageModel.prototype, 'get');
 				ProductImageModel.prototype.get.resolves([]);
 			},
-			after: (response, sandbox) => {
-				sandbox.assert.calledOnce(ProductImageModel.prototype.get);
-				sandbox.assert.calledWithExactly(ProductImageModel.prototype.get, {
+			after: (response, sinon) => {
+				sinon.assert.calledOnce(ProductImageModel.prototype.get);
+				sinon.assert.calledWithExactly(ProductImageModel.prototype.get, {
 					page: 1,
 					limit: 60
 				});
@@ -87,8 +87,8 @@ describe('Product Image List Api', () => {
 				code: 200,
 				body: []
 			},
-			before: sandbox => {
-				sandbox.stub(ProductImageModel.prototype, 'get');
+			before: sinon => {
+				sinon.stub(ProductImageModel.prototype, 'get');
 				ProductImageModel.prototype.get.resolves([]);
 			}
 		},
@@ -102,11 +102,11 @@ describe('Product Image List Api', () => {
 					'x-janis-total': 1
 				}
 			},
-			before: sandbox => {
-				sandbox.stub(ProductImageModel.prototype, 'get');
+			before: sinon => {
+				sinon.stub(ProductImageModel.prototype, 'get');
 				ProductImageModel.prototype.get.resolves([{ ...productImage }]);
 
-				sandbox.stub(ProductImageModel.prototype, 'getTotals');
+				sinon.stub(ProductImageModel.prototype, 'getTotals');
 				ProductImageModel.prototype.getTotals.returns({ total: 1 });
 			}
 		}
@@ -138,13 +138,13 @@ describe('Product Image List Api', () => {
 				}
 			},
 			response: {},
-			before: sandbox => {
-				sandbox.stub(ProductImageModel.prototype, 'get');
+			before: sinon => {
+				sinon.stub(ProductImageModel.prototype, 'get');
 				ProductImageModel.prototype.get.resolves([]);
 			},
-			after: (response, sandbox) => {
-				sandbox.assert.calledOnce(ProductImageModel.prototype.get);
-				sandbox.assert.calledWithExactly(ProductImageModel.prototype.get, {
+			after: (response, sinon) => {
+				sinon.assert.calledOnce(ProductImageModel.prototype.get);
+				sinon.assert.calledWithExactly(ProductImageModel.prototype.get, {
 					page: 1,
 					limit: 60,
 					filters: {
@@ -169,13 +169,13 @@ describe('Product Image List Api', () => {
 				}
 			},
 			response: {},
-			before: sandbox => {
-				sandbox.stub(ProductImageModel.prototype, 'get');
+			before: sinon => {
+				sinon.stub(ProductImageModel.prototype, 'get');
 				ProductImageModel.prototype.get.resolves([]);
 			},
-			after: (response, sandbox) => {
-				sandbox.assert.calledOnce(ProductImageModel.prototype.get);
-				sandbox.assert.calledWithExactly(ProductImageModel.prototype.get, {
+			after: (response, sinon) => {
+				sinon.assert.calledOnce(ProductImageModel.prototype.get);
+				sinon.assert.calledWithExactly(ProductImageModel.prototype.get, {
 					page: 1,
 					limit: 60,
 					order: {
@@ -195,13 +195,13 @@ describe('Product Image List Api', () => {
 					}
 				},
 				response: {},
-				before: sandbox => {
-					sandbox.stub(ProductImageModel.prototype, 'get');
+				before: sinon => {
+					sinon.stub(ProductImageModel.prototype, 'get');
 					ProductImageModel.prototype.get.resolves([]);
 				},
-				after: (response, sandbox) => {
-					sandbox.assert.calledOnce(ProductImageModel.prototype.get);
-					sandbox.assert.calledWithExactly(ProductImageModel.prototype.get, {
+				after: (response, sinon) => {
+					sinon.assert.calledOnce(ProductImageModel.prototype.get);
+					sinon.assert.calledWithExactly(ProductImageModel.prototype.get, {
 						page: 1,
 						limit: 60,
 						order: {

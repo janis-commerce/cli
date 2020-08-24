@@ -62,8 +62,8 @@ describe('Product Image Post Api', () => {
 			response: {
 				code: 400
 			},
-			before: sandbox => {
-				sandbox.stub(ProductImageModel.prototype);
+			before: sinon => {
+				sinon.stub(ProductImageModel.prototype);
 			}
 		},
 		{
@@ -74,8 +74,8 @@ describe('Product Image Post Api', () => {
 			response: {
 				code: 500
 			},
-			before: sandbox => {
-				sandbox.stub(ProductImageModel.prototype);
+			before: sinon => {
+				sinon.stub(ProductImageModel.prototype);
 				ProductImageModel.prototype.insert.rejects(new Error('Error updating'));
 			}
 		},
@@ -90,13 +90,13 @@ describe('Product Image Post Api', () => {
 					id: '5dea9fc691240d00084083f8'
 				}
 			},
-			before: sandbox => {
-				sandbox.stub(ProductImageModel.prototype);
+			before: sinon => {
+				sinon.stub(ProductImageModel.prototype);
 				ProductImageModel.prototype.insert.returns('5dea9fc691240d00084083f8');
 			},
-			after: (response, sandbox) => {
-				sandbox.assert.calledOnce(ProductImageModel.prototype.insert);
-				sandbox.assert.calledWithExactly(ProductImageModel.prototype.insert, { ...productImageFormatted });
+			after: (response, sinon) => {
+				sinon.assert.calledOnce(ProductImageModel.prototype.insert);
+				sinon.assert.calledWithExactly(ProductImageModel.prototype.insert, { ...productImageFormatted });
 			}
 		}
 	]);

@@ -62,8 +62,8 @@ describe('Product Image Get Api', () => {
 			response: {
 				code: 404
 			},
-			before: sandbox => {
-				sandbox.stub(ProductImageModel.prototype, 'get');
+			before: sinon => {
+				sinon.stub(ProductImageModel.prototype, 'get');
 				ProductImageModel.prototype.get.resolves([]);
 			}
 		},
@@ -71,13 +71,13 @@ describe('Product Image Get Api', () => {
 			description: 'Should pass the correct params to the model',
 			request: {},
 			response: {},
-			before: sandbox => {
-				sandbox.stub(ProductImageModel.prototype, 'get');
+			before: sinon => {
+				sinon.stub(ProductImageModel.prototype, 'get');
 				ProductImageModel.prototype.get.resolves([{ ...productImage }]);
 			},
-			after: (response, sandbox) => {
-				sandbox.assert.calledOnce(ProductImageModel.prototype.get);
-				sandbox.assert.calledWithExactly(ProductImageModel.prototype.get, {
+			after: (response, sinon) => {
+				sinon.assert.calledOnce(ProductImageModel.prototype.get);
+				sinon.assert.calledWithExactly(ProductImageModel.prototype.get, {
 					filters: {
 						id: '5dea9fc691240d00084083f8'
 					},
@@ -93,8 +93,8 @@ describe('Product Image Get Api', () => {
 				code: 200,
 				body: { ...productImageFormatted }
 			},
-			before: sandbox => {
-				sandbox.stub(ProductImageModel.prototype, 'get');
+			before: sinon => {
+				sinon.stub(ProductImageModel.prototype, 'get');
 				ProductImageModel.prototype.get.resolves([{ ...productImage }]);
 			}
 		}
