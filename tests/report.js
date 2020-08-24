@@ -62,22 +62,22 @@ describe('Report', () => {
 	it('Should only open the files with FILE_NEEDS_CHANGES events', async () => {
 
 		ReportModule.Report.add(ReportModule.reportEvents.FILE_CREATED, 'my-file-path.json');
-		ReportModule.Report.add(ReportModule.reportEvents.FILE_NEEDS_CHANGES, 'my-file-path.js');
-		ReportModule.Report.add(ReportModule.reportEvents.FILE_NEEDS_CHANGES, '/var/www/path/to/my-other-file-path.yml');
+		ReportModule.Report.add(ReportModule.reportEvents.FILE_NEEDS_CHANGES, 'some-path/my-file-path.js');
+		ReportModule.Report.add(ReportModule.reportEvents.FILE_NEEDS_CHANGES, '/var/www/root-path/path/to/my-other-file-path.yml');
 		await ReportModule.Report.finish();
 
 		sinon.assert.calledOnce(Table.prototype.push);
 		sinon.assert.calledWithExactly(Table.prototype.push,
 			[ReportModule.reportEvents.FILE_CREATED, 'my-file-path.json'],
-			[ReportModule.reportEvents.FILE_NEEDS_CHANGES, 'my-file-path.js'],
-			[ReportModule.reportEvents.FILE_NEEDS_CHANGES, '/var/www/path/to/my-other-file-path.yml']
+			[ReportModule.reportEvents.FILE_NEEDS_CHANGES, 'some-path/my-file-path.js'],
+			[ReportModule.reportEvents.FILE_NEEDS_CHANGES, 'path/to/my-other-file-path.yml']
 		);
 
 		sinon.assert.calledTwice(childProcess.spawn);
-		sinon.assert.calledWithExactly(childProcess.spawn.getCall(0), 'xdg-open', [path.join(cwd, 'my-file-path.js')], {
+		sinon.assert.calledWithExactly(childProcess.spawn.getCall(0), 'xdg-open', [path.join(cwd, 'some-path/my-file-path.js')], {
 			detached: true
 		});
-		sinon.assert.calledWithExactly(childProcess.spawn.getCall(1), 'xdg-open', ['/var/www/path/to/my-other-file-path.yml'], {
+		sinon.assert.calledWithExactly(childProcess.spawn.getCall(1), 'xdg-open', ['/var/www/root-path/path/to/my-other-file-path.yml'], {
 			detached: true
 		});
 	});
