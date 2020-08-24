@@ -20,6 +20,10 @@ Each command will create and configure all the necessary files. Then they will b
 
 **Important** Some properties cannot be generated automatically so they need to be adjusted manually.
 
+## Environment
+
+This package, as all of the @janiscommerce ecosystem, is aware of the `MS_PATH` env variable. Remember to set it first in case you need it, for example: `MS_PATH=src janis-cli create-api`.
+
 ## Usage
 
 `janis-cli <command> [...args]`
