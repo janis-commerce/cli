@@ -5,7 +5,8 @@ const sinon = require('sinon');
 
 const path = require('path');
 const fs = require('fs-extra');
-const childProcess = require('child_process');
+
+const open = require('../../lib/wrappers/open');
 
 const {
 	writeTest,
@@ -21,7 +22,7 @@ describe('FS', () => {
 		sinon.stub(fs);
 		sinon.stub(process, 'cwd')
 			.returns(cwd);
-		sinon.stub(childProcess, 'spawn');
+		sinon.stub(open, 'openFile');
 	});
 
 	afterEach(() => {
@@ -56,10 +57,7 @@ describe('FS', () => {
 
 				await openTest('/some/path');
 
-				sinon.assert.calledOnce(childProcess.spawn);
-				sinon.assert.calledWithExactly(childProcess.spawn, 'xdg-open', [path.join(cwd, 'tests/api', 'some/path.js')], {
-					detached: true
-				});
+				sinon.assert.calledOnceWithExactly(open.openFile, path.join(cwd, 'tests/api', 'some/path.js'));
 			});
 		});
 

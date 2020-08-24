@@ -3,11 +3,10 @@
 const path = require('path');
 
 const sinon = require('sinon');
-const childProcess = require('child_process');
-
 const Table = require('cli-table');
 
 const ReportModule = require('../lib/report');
+const open = require('../lib/wrappers/open');
 
 describe('Report', () => {
 
@@ -17,7 +16,7 @@ describe('Report', () => {
 		sinon.spy(Table.prototype, 'push');
 		sinon.stub(ReportModule.Report, 'consoleLog');
 		sinon.stub(process, 'cwd').returns(cwd);
-		sinon.stub(childProcess, 'spawn');
+		sinon.stub(open, 'openFile');
 
 		// To flush the reports
 		await ReportModule.Report.finish();
@@ -50,13 +49,13 @@ describe('Report', () => {
 
 	it('Should not open any file if no events', async () => {
 		await ReportModule.Report.finish();
-		sinon.assert.notCalled(childProcess.spawn);
+		sinon.assert.notCalled(open.openFile);
 	});
 
 	it('Should not open any file if no events of FILE_NEEDS_CHANGES ocurred', async () => {
 		ReportModule.Report.add(ReportModule.reportEvents.FILE_CREATED, 'my-file-path.json');
 		await ReportModule.Report.finish();
-		sinon.assert.notCalled(childProcess.spawn);
+		sinon.assert.notCalled(open.openFile);
 	});
 
 	it('Should only open the files with FILE_NEEDS_CHANGES events', async () => {
@@ -73,13 +72,9 @@ describe('Report', () => {
 			[ReportModule.reportEvents.FILE_NEEDS_CHANGES, 'path/to/my-other-file-path.yml']
 		);
 
-		sinon.assert.calledTwice(childProcess.spawn);
-		sinon.assert.calledWithExactly(childProcess.spawn.getCall(0), 'xdg-open', [path.join(cwd, 'some-path/my-file-path.js')], {
-			detached: true
-		});
-		sinon.assert.calledWithExactly(childProcess.spawn.getCall(1), 'xdg-open', ['/var/www/root-path/path/to/my-other-file-path.yml'], {
-			detached: true
-		});
+		sinon.assert.calledTwice(open.openFile);
+		sinon.assert.calledWithExactly(open.openFile.getCall(0), path.join(cwd, 'some-path/my-file-path.js'));
+		sinon.assert.calledWithExactly(open.openFile.getCall(1), '/var/www/root-path/path/to/my-other-file-path.yml');
 	});
 
 });

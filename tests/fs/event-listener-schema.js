@@ -4,7 +4,8 @@ const sinon = require('sinon');
 
 const path = require('path');
 const fs = require('fs-extra');
-const childProcess = require('child_process');
+
+const open = require('../../lib/wrappers/open');
 
 const {
 	writeSchema,
@@ -19,7 +20,7 @@ describe('FS', () => {
 		sinon.stub(fs);
 		sinon.stub(process, 'cwd')
 			.returns(cwd);
-		sinon.stub(childProcess, 'spawn');
+		sinon.stub(open, 'openFile');
 	});
 
 	afterEach(() => {
@@ -48,10 +49,7 @@ describe('FS', () => {
 
 				await openSchema('my-service', 'my-entity', 'myEvent', 'content');
 
-				sinon.assert.calledOnce(childProcess.spawn);
-				sinon.assert.calledWithExactly(childProcess.spawn, 'xdg-open', [path.join(cwd, baseDir, 'my-service/my-entity/my-event.yml')], {
-					detached: true
-				});
+				sinon.assert.calledOnceWithExactly(open.openFile, path.join(cwd, baseDir, 'my-service/my-entity/my-event.yml'));
 			});
 		});
 

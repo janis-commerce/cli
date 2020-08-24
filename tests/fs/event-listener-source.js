@@ -5,7 +5,8 @@ const sinon = require('sinon');
 
 const path = require('path');
 const fs = require('fs-extra');
-const childProcess = require('child_process');
+
+const open = require('../../lib/wrappers/open');
 
 const {
 	writeSource,
@@ -21,7 +22,7 @@ describe('FS', () => {
 		sinon.stub(fs);
 		sinon.stub(process, 'cwd')
 			.returns(cwd);
-		sinon.stub(childProcess, 'spawn');
+		sinon.stub(open, 'openFile');
 	});
 
 	afterEach(() => {
@@ -57,10 +58,7 @@ describe('FS', () => {
 
 					await openSource('my-service', 'my-entity', 'myEvent');
 
-					sinon.assert.calledOnce(childProcess.spawn);
-					sinon.assert.calledWithExactly(childProcess.spawn, 'xdg-open', [path.join(cwd, 'event-listeners', 'my-service', 'my-entity', 'my-event.js')], {
-						detached: true
-					});
+					sinon.assert.calledOnceWithExactly(open.openFile, path.join(cwd, 'event-listeners', 'my-service', 'my-entity', 'my-event.js'));
 				});
 			});
 		});
@@ -100,12 +98,7 @@ describe('FS', () => {
 
 					await openSource('my-service', 'my-entity', 'myEvent');
 
-					sinon.assert.calledOnce(childProcess.spawn);
-					sinon.assert.calledWithExactly(childProcess.spawn, 'xdg-open', [
-						path.join(cwd, 'src/event-listeners', 'my-service', 'my-entity', 'my-event.js')
-					], {
-						detached: true
-					});
+					sinon.assert.calledOnceWithExactly(open.openFile, path.join(cwd, 'src/event-listeners', 'my-service', 'my-entity', 'my-event.js'));
 				});
 			});
 		});
