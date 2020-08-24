@@ -7,6 +7,10 @@ and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.
 
 ## [Unreleased]
 
+## [1.4.1] - 2020-08-24
+### Changed
+- Report now prints relative paths
+
 ## [1.4.0] - 2020-07-28
 ### Added
 - Added prompt 'Should add view-schemas' for `api-list`, `api-post`, `api-put` and `crud`
