@@ -42,7 +42,7 @@ describe('Templates', () => {
 				},
 				sections: [
 					{
-						name: 'mainFormSection',
+						name: 'main',
 						rootComponent: 'MainForm',
 						fieldsGroup: [{
 							name: 'detail',
@@ -106,7 +106,7 @@ describe('Templates', () => {
 						}]
 					},
 					{
-						name: 'logsSection',
+						name: 'logs',
 						rootComponent: 'LogsBrowseSection'
 					}
 				]
