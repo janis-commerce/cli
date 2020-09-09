@@ -42,7 +42,8 @@ describe('Templates', () => {
 				},
 				sections: [
 					{
-						name: 'main',
+						name: 'mainFormSection',
+						title: 'main',
 						rootComponent: 'MainForm',
 						fieldsGroup: [{
 							name: 'detail',
