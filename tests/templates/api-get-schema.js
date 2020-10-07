@@ -23,14 +23,7 @@ describe('Templates', () => {
 							tags: ['Product Image'],
 							summary: 'Get a Product Image',
 							parameters: [{
-								name: 'id',
-								in: 'path',
-								schema: {
-									type: 'string',
-									example: 'd555345345345as67a342a'
-								},
-								required: true,
-								description: 'The Product Image ID'
+								$ref: '#/components/parameters/id'
 							}],
 							responses: {
 								200: {
@@ -88,14 +81,7 @@ describe('Templates', () => {
 								JanisClient: []
 							}],
 							parameters: [{
-								name: 'id',
-								in: 'path',
-								schema: {
-									type: 'string',
-									example: 'd555345345345as67a342a'
-								},
-								required: true,
-								description: 'The Product Image ID'
+								$ref: '#/components/parameters/id'
 							}],
 							responses: {
 								200: {

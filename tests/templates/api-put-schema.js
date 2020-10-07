@@ -5,6 +5,25 @@ const assert = require('assert');
 const template = require('../../lib/templates/api-put-schema');
 
 describe('Templates', () => {
+
+	const expectedResponses = {
+		200: {
+			$ref: '#/components/responses/SuccessUpdateResponse'
+		},
+		400: {
+			$ref: '#/components/responses/BadRequest'
+		},
+		401: {
+			$ref: '#/components/responses/Unauthorized'
+		},
+		403: {
+			$ref: '#/components/responses/Forbidden'
+		},
+		500: {
+			$ref: '#/components/responses/InternalError'
+		}
+	};
+
 	describe('API Update schema', () => {
 
 		it('Should return the schema with no security', () => {
@@ -23,14 +42,7 @@ describe('Templates', () => {
 							tags: ['Product Image'],
 							summary: 'Update a Product Image',
 							parameters: [{
-								name: 'id',
-								in: 'path',
-								schema: {
-									type: 'string',
-									example: 'd555345345345as67a342a'
-								},
-								required: true,
-								description: 'The Product Image ID'
+								$ref: '#/components/parameters/id'
 							}],
 							requestBody: {
 								description: 'A Product Image',
@@ -43,35 +55,7 @@ describe('Templates', () => {
 									}
 								}
 							},
-							responses: {
-								200: {
-									description: 'The Product Image was updated',
-									content: {
-										'application/json': {
-											schema: {
-												type: 'object',
-												properties: {
-													id: {
-														$ref: '#/components/schemas/ProductImage/properties/id'
-													}
-												}
-											}
-										}
-									}
-								},
-								400: {
-									$ref: '#/components/responses/BadRequest'
-								},
-								401: {
-									$ref: '#/components/responses/Unauthorized'
-								},
-								403: {
-									$ref: '#/components/responses/Forbidden'
-								},
-								500: {
-									$ref: '#/components/responses/InternalError'
-								}
-							}
+							responses: expectedResponses
 						}
 					}
 				}
@@ -104,14 +88,7 @@ describe('Templates', () => {
 								JanisClient: []
 							}],
 							parameters: [{
-								name: 'id',
-								in: 'path',
-								schema: {
-									type: 'string',
-									example: 'd555345345345as67a342a'
-								},
-								required: true,
-								description: 'The Product Image ID'
+								$ref: '#/components/parameters/id'
 							}],
 							requestBody: {
 								description: 'A Product Image',
@@ -124,35 +101,7 @@ describe('Templates', () => {
 									}
 								}
 							},
-							responses: {
-								200: {
-									description: 'The Product Image was updated',
-									content: {
-										'application/json': {
-											schema: {
-												type: 'object',
-												properties: {
-													id: {
-														$ref: '#/components/schemas/ProductImage/properties/id'
-													}
-												}
-											}
-										}
-									}
-								},
-								400: {
-									$ref: '#/components/responses/BadRequest'
-								},
-								401: {
-									$ref: '#/components/responses/Unauthorized'
-								},
-								403: {
-									$ref: '#/components/responses/Forbidden'
-								},
-								500: {
-									$ref: '#/components/responses/InternalError'
-								}
-							}
+							responses: expectedResponses
 						}
 					}
 				}

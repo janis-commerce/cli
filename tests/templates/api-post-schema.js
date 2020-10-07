@@ -7,6 +7,24 @@ const template = require('../../lib/templates/api-post-schema');
 describe('Templates', () => {
 	describe('API Create schema', () => {
 
+		const expectedResponses = {
+			200: {
+				$ref: '#/components/responses/SuccessCreateResponse'
+			},
+			400: {
+				$ref: '#/components/responses/BadRequest'
+			},
+			401: {
+				$ref: '#/components/responses/Unauthorized'
+			},
+			403: {
+				$ref: '#/components/responses/Forbidden'
+			},
+			500: {
+				$ref: '#/components/responses/InternalError'
+			}
+		};
+
 		it('Should return the schema with no security', () => {
 			const result = template({
 				entity: 'productImage'
@@ -33,35 +51,7 @@ describe('Templates', () => {
 									}
 								}
 							},
-							responses: {
-								200: {
-									description: 'The Product Image was created',
-									content: {
-										'application/json': {
-											schema: {
-												type: 'object',
-												properties: {
-													id: {
-														$ref: '#/components/schemas/ProductImage/properties/id'
-													}
-												}
-											}
-										}
-									}
-								},
-								400: {
-									$ref: '#/components/responses/BadRequest'
-								},
-								401: {
-									$ref: '#/components/responses/Unauthorized'
-								},
-								403: {
-									$ref: '#/components/responses/Forbidden'
-								},
-								500: {
-									$ref: '#/components/responses/InternalError'
-								}
-							}
+							responses: expectedResponses
 						}
 					}
 				}
@@ -104,35 +94,7 @@ describe('Templates', () => {
 									}
 								}
 							},
-							responses: {
-								200: {
-									description: 'The Product Image was created',
-									content: {
-										'application/json': {
-											schema: {
-												type: 'object',
-												properties: {
-													id: {
-														$ref: '#/components/schemas/ProductImage/properties/id'
-													}
-												}
-											}
-										}
-									}
-								},
-								400: {
-									$ref: '#/components/responses/BadRequest'
-								},
-								401: {
-									$ref: '#/components/responses/Unauthorized'
-								},
-								403: {
-									$ref: '#/components/responses/Forbidden'
-								},
-								500: {
-									$ref: '#/components/responses/InternalError'
-								}
-							}
+							responses: expectedResponses
 						}
 					}
 				}

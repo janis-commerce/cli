@@ -6,11 +6,15 @@ The format is based on [Keep a Changelog](http://keepachangelog.com/en/1.0.0/)
 and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.html).
 
 ## [Unreleased]
+
+## [1.6.0] - 2020-10-07
 ### Added
 - Header in Edit schema
+- GitHub Actions for build, coverage and publish workflows
 
 ### Changed
 - Names for sections in Edit and New schemas
+- Reused multiple api-schemas: `schemas`, `parameters`, `responses`
 
 ## [1.5.0] - 2020-08-25
 ### Added

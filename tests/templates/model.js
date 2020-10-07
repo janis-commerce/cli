@@ -38,10 +38,6 @@ module.exports = class ProductImage extends Model {
 		return 'productImages';
 	}
 
-	static get uniqueIndexes() {
-		return [];
-	}
-
 };
 `);
 		});

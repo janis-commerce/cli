@@ -27,14 +27,19 @@ describe('Templates', () => {
 							summary: 'List Product Images',
 							parameters: [
 								{ $ref: '#/components/parameters/ProductImageSortBy' },
-								{ $ref: '#/components/parameters/ProductImageFilters' },
 								{ $ref: '#/components/parameters/ListSortDirection' },
+								{ $ref: '#/components/parameters/ProductImageFilters' },
 								{ $ref: '#/components/parameters/ListPageNumber' },
 								{ $ref: '#/components/parameters/ListPageSize' }
 							],
 							responses: {
 								200: {
 									description: 'Product Images listed',
+									headers: {
+										'x-janis-total': {
+											$ref: '#/components/headers/x-janis-total'
+										}
+									},
 									content: {
 										'application/json': {
 											schema: {
@@ -91,30 +96,22 @@ describe('Templates', () => {
 								type: 'object',
 								properties: {
 									id: {
-										type: 'string',
-										description: 'The Product Image ID'
+										$ref: '#/components/schemas/ProductImage/properties/id'
 									},
 									isDefault: {
-										type: 'boolean',
-										description: 'ADD A DESCRIPTION'
+										$ref: '#/components/schemas/ProductImage/properties/isDefault'
 									},
 									qty: {
-										type: 'number',
-										description: 'ADD A DESCRIPTION'
+										$ref: '#/components/schemas/ProductImage/properties/qty'
 									},
 									status: {
-										type: 'string',
-										description: 'The Product Image status',
-										enum: ['active', 'inactive']
+										$ref: '#/components/schemas/ProductImage/properties/status'
 									},
 									userCreated: {
-										type: 'string',
-										description: 'The creation user ID'
+										$ref: '#/components/schemas/ProductImage/properties/userCreated'
 									},
 									dateCreated: {
-										type: 'string',
-										format: 'date-time',
-										description: 'The creation date'
+										$ref: '#/components/schemas/ProductImage/properties/dateCreated'
 									}
 								}
 							}
@@ -154,14 +151,19 @@ describe('Templates', () => {
 							}],
 							parameters: [
 								{ $ref: '#/components/parameters/ProductImageSortBy' },
-								{ $ref: '#/components/parameters/ProductImageFilters' },
 								{ $ref: '#/components/parameters/ListSortDirection' },
+								{ $ref: '#/components/parameters/ProductImageFilters' },
 								{ $ref: '#/components/parameters/ListPageNumber' },
 								{ $ref: '#/components/parameters/ListPageSize' }
 							],
 							responses: {
 								200: {
 									description: 'Product Images listed',
+									headers: {
+										'x-janis-total': {
+											$ref: '#/components/headers/x-janis-total'
+										}
+									},
 									content: {
 										'application/json': {
 											schema: {
@@ -218,26 +220,19 @@ describe('Templates', () => {
 								type: 'object',
 								properties: {
 									id: {
-										type: 'string',
-										description: 'The Product Image ID'
+										$ref: '#/components/schemas/ProductImage/properties/id'
 									},
 									isDefault: {
-										type: 'boolean',
-										description: 'ADD A DESCRIPTION'
+										$ref: '#/components/schemas/ProductImage/properties/isDefault'
 									},
 									status: {
-										type: 'string',
-										description: 'The Product Image status',
-										enum: ['active', 'inactive']
+										$ref: '#/components/schemas/ProductImage/properties/status'
 									},
 									userCreated: {
-										type: 'string',
-										description: 'The creation user ID'
+										$ref: '#/components/schemas/ProductImage/properties/userCreated'
 									},
 									dateCreated: {
-										type: 'string',
-										format: 'date-time',
-										description: 'The creation date'
+										$ref: '#/components/schemas/ProductImage/properties/dateCreated'
 									}
 								}
 							}

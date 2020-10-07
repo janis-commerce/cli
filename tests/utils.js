@@ -37,38 +37,6 @@ describe('Utils', () => {
 
 	describe('getFieldSampleValue()', () => {
 
-		const idStringRegexp = /^'[a-f0-9]{24}'$/i;
-		const dateStringRegexp = /^'\d{4}-\d{2}-\d{2}T\d{2}:\d{2}:\d{2}\.\d{3}Z'$/i;
-
-		it('Should return a valid ObjectID for a field named id', () => {
-			const sampleValue = getFieldSampleValue('id');
-			assert(sampleValue.match(idStringRegexp));
-		});
-
-		it('Should return a status name for a field named status', () => {
-			assert.strictEqual(getFieldSampleValue('status'), '\'active\'');
-		});
-
-		it('Should return a valid date for a field named dateCreated', () => {
-			const sampleValue = getFieldSampleValue('dateCreated');
-			assert(sampleValue.match(dateStringRegexp));
-		});
-
-		it('Should return a valid date for a field named dateModified', () => {
-			const sampleValue = getFieldSampleValue('dateModified');
-			assert(sampleValue.match(dateStringRegexp));
-		});
-
-		it('Should return a valid ObjectID for a field named userCreated', () => {
-			const sampleValue = getFieldSampleValue('userCreated');
-			assert(sampleValue.match(idStringRegexp));
-		});
-
-		it('Should return a valid ObjectID for a field named userModified', () => {
-			const sampleValue = getFieldSampleValue('userModified');
-			assert(sampleValue.match(idStringRegexp));
-		});
-
 		it('Should return a boolean for a field starting with \'is\'', () => {
 			assert.strictEqual(getFieldSampleValue('isSomething'), true);
 		});

@@ -30,10 +30,7 @@ describe('Templates', () => {
 							description: 'A Product Image',
 							properties: {
 								id: {
-									type: 'string',
-									description: 'The Product Image ID',
-									readOnly: true,
-									example: '5dea9fc691240d00084083f8'
+									$ref: '#/components/schemas/id'
 								},
 								someField: {
 									type: 'string',
@@ -56,39 +53,19 @@ describe('Templates', () => {
 									example: true
 								},
 								status: {
-									type: 'string',
-									description: 'The Product Image status',
-									example: 'active',
-									enum: [
-										'active',
-										'inactive'
-									]
+									$ref: '#/components/schemas/status'
 								},
 								dateCreated: {
-									type: 'string',
-									format: 'date-time',
-									description: 'The creation date',
-									readOnly: true,
-									example: '2020-01-09T21:34:38.897Z'
+									$ref: '#/components/schemas/dateCreated'
 								},
 								userCreated: {
-									type: 'string',
-									description: 'The creation user ID',
-									readOnly: true,
-									example: '5dea9fc691240d00084083f9'
+									$ref: '#/components/schemas/userCreated'
 								},
 								dateModified: {
-									type: 'string',
-									format: 'date-time',
-									description: 'The last modification date',
-									readOnly: true,
-									example: '2020-01-09T21:34:38.897Z'
+									$ref: '#/components/schemas/dateModified'
 								},
 								userModified: {
-									type: 'string',
-									description: 'The last modification user ID',
-									readOnly: true,
-									example: '5dea9fc691240d0008408301'
+									$ref: '#/components/schemas/userModified'
 								}
 							},
 							required: [
