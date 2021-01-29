@@ -44,6 +44,7 @@ describe('Templates', () => {
 					{
 						name: 'mainFormSection',
 						title: 'main',
+						icon: 'summary',
 						rootComponent: 'MainForm',
 						fieldsGroup: [{
 							name: 'detail',
@@ -107,7 +108,13 @@ describe('Templates', () => {
 						}]
 					},
 					{
+						name: 'comments',
+						icon: 'comment',
+						rootComponent: 'Comments'
+					},
+					{
 						name: 'logs',
+						icon: 'clock',
 						rootComponent: 'LogsBrowseSection'
 					}
 				]
