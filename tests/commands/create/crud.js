@@ -79,14 +79,7 @@ describe('Commands', () => {
 
 			it('Should write and open all the files', async () => {
 
-				prompts.inject(['my-service', 'productImage', 'productImages', [{
-					ApiKey: [],
-					ApiSecret: []
-				}, {
-					JanisClient: []
-				}], ['id', 'status'], ['status'], ['id'],
-				true
-				]);
+				prompts.inject(['my-service', 'productImage', 'productImages', 'full', ['id', 'status'], ['status'], ['id'], true]);
 
 				await handler({});
 
@@ -94,11 +87,7 @@ describe('Commands', () => {
 					service: 'my-service',
 					entity: 'productImage',
 					entityPlural: 'productImages',
-					security: [{
-						ApiKey: [],
-						ApiSecret: [],
-						JanisClient: []
-					}],
+					auth: 'full',
 					fields: ['id', 'status'],
 					sortableFields: ['status'],
 					availableFilters: ['id'],
@@ -120,7 +109,7 @@ describe('Commands', () => {
 
 			it('Should write and open all the files (without security)', async () => {
 
-				prompts.inject(['my-service', 'productImage', 'productImages', [], ['id', 'status'], ['status'], ['id'], false]);
+				prompts.inject(['my-service', 'productImage', 'productImages', 'none', ['id', 'status'], ['status'], ['id'], false]);
 
 				await handler({});
 
@@ -128,7 +117,7 @@ describe('Commands', () => {
 					service: 'my-service',
 					entity: 'productImage',
 					entityPlural: 'productImages',
-					security: [],
+					auth: 'none',
 					fields: ['id', 'status'],
 					sortableFields: ['status'],
 					availableFilters: ['id'],

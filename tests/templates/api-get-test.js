@@ -66,10 +66,15 @@ describe('Product Image Get Api', () => {
 				code: 404
 			},
 			before: sinon => {
-				sinon.spy(ProductImageModel.prototype, 'get');
+				sinon.stub(ProductImageModel.prototype, 'get')
+					.resolves([]);
 			},
 			after: (response, sinon) => {
-				sinon.assert.notCalled(ProductImageModel.prototype.get);
+				sinon.assert.calledOnceWithExactly(ProductImageModel.prototype.get, {
+					filters: { id },
+					page: 1,
+					limit: 1
+				});
 			}
 		},
 		{

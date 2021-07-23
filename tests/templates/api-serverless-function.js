@@ -2,20 +2,24 @@
 
 const assert = require('assert');
 
-const template = require('../../lib/templates/api-get-serverless-function');
+const template = require('../../lib/templates/api-serverless-function');
 
 describe('Templates', () => {
-	describe('API Get Serverless Function', () => {
+	describe('API Serverless Function', () => {
 
 		it('Should return the serverless helper function hook without authorizer', () => {
 			const result = template({
-				entity: 'productImage'
+				path: '/my-custom-api',
+				method: 'PATCH',
+				methodAlias: 'some-method-name'
 			});
 
 			assert.deepStrictEqual(result, [
-				'janis.apiGet',
+				'janis.api',
 				{
-					entityName: 'product-image',
+					path: '/my-custom-api',
+					method: 'PATCH',
+					methodName: 'some-method-name',
 					cors: true
 				}
 			]);
@@ -23,14 +27,18 @@ describe('Templates', () => {
 
 		it('Should return the serverless helper function hook with FullAuthorizer', () => {
 			const result = template({
-				entity: 'productImage',
+				path: '/my-custom-api',
+				method: 'PATCH',
+				methodAlias: 'some-method-name',
 				auth: 'full'
 			});
 
 			assert.deepStrictEqual(result, [
-				'janis.apiGet',
+				'janis.api',
 				{
-					entityName: 'product-image',
+					path: '/my-custom-api',
+					method: 'PATCH',
+					methodName: 'some-method-name',
 					authorizer: 'FullAuthorizer',
 					cors: true
 				}
@@ -39,14 +47,18 @@ describe('Templates', () => {
 
 		it('Should return the serverless helper function hook with NoClientAuthorizer', () => {
 			const result = template({
-				entity: 'productImage',
+				path: '/my-custom-api',
+				method: 'PATCH',
+				methodAlias: 'some-method-name',
 				auth: 'core'
 			});
 
 			assert.deepStrictEqual(result, [
-				'janis.apiGet',
+				'janis.api',
 				{
-					entityName: 'product-image',
+					path: '/my-custom-api',
+					method: 'PATCH',
+					methodName: 'some-method-name',
 					authorizer: 'NoClientAuthorizer',
 					cors: true
 				}
