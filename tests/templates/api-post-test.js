@@ -63,7 +63,10 @@ describe('Product Image Post Api', () => {
 				code: 400
 			},
 			before: sinon => {
-				sinon.stub(ProductImageModel.prototype);
+				sinon.spy(ProductImageModel.prototype, 'insert');
+			},
+			after: (response, sinon) => {
+				sinon.assert.notCalled(ProductImageModel.prototype.insert);
 			}
 		},
 		{
@@ -75,8 +78,11 @@ describe('Product Image Post Api', () => {
 				code: 500
 			},
 			before: sinon => {
-				sinon.stub(ProductImageModel.prototype);
-				ProductImageModel.prototype.insert.rejects(new Error('Error updating'));
+				sinon.stub(ProductImageModel.prototype, 'insert')
+					.rejects(new Error('Error inserting'));
+			},
+			after: (response, sinon) => {
+				sinon.assert.calledOnceWithExactly(ProductImageModel.prototype.insert, { ...productImageFormatted });
 			}
 		},
 		{
@@ -91,12 +97,11 @@ describe('Product Image Post Api', () => {
 				}
 			},
 			before: sinon => {
-				sinon.stub(ProductImageModel.prototype);
-				ProductImageModel.prototype.insert.returns('5dea9fc691240d00084083f8');
+				sinon.stub(ProductImageModel.prototype, 'insert')
+					.resolves('5dea9fc691240d00084083f8');
 			},
 			after: (response, sinon) => {
-				sinon.assert.calledOnce(ProductImageModel.prototype.insert);
-				sinon.assert.calledWithExactly(ProductImageModel.prototype.insert, { ...productImageFormatted });
+				sinon.assert.calledOnceWithExactly(ProductImageModel.prototype.insert, { ...productImageFormatted });
 			}
 		}
 	]);

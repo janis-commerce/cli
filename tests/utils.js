@@ -73,10 +73,10 @@ describe('Utils', () => {
 		});
 	});
 
-	describe('', () => {
+	describe('Validation Test Cases', () => {
 
 		it('Should return a string with the test case with the given options', () => {
-			assert.strictEqual(getValidationTestCase('myEntity', 'myModelName', 'myFieldName'), `		{
+			assert.strictEqual(getValidationTestCase('myEntity', 'myModelName', 'myFieldName', 'insert'), `		{
 			description: 'Should return 400 if the required field \\'myFieldName\\' is not passed',
 			request: {
 				data: deleteProp(myEntity, 'myFieldName')
@@ -85,7 +85,10 @@ describe('Utils', () => {
 				code: 400
 			},
 			before: sinon => {
-				sinon.stub(myModelName.prototype);
+				sinon.spy(myModelName.prototype, 'insert');
+			},
+			after: (response, sinon) => {
+				sinon.assert.notCalled(myModelName.prototype.insert);
 			}
 		},`);
 		});

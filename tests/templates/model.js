@@ -35,9 +35,12 @@ const Model = require('@janiscommerce/model');
 module.exports = class ProductImage extends Model {
 
 	static get table() {
-		return 'productImages';
+		return 'product-images';
 	}
 
+	static get indexes() {
+		return [];
+	}
 };
 `);
 		});

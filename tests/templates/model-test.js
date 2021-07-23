@@ -36,19 +36,16 @@ const ProductImageModel = require('../../src/models/product-image');
 
 describe('Product Image Model', () => {
 
-	describe('Getters', () => {
+	it('Should not return any databaseKey', () => {
+		assert.deepStrictEqual(ProductImageModel.prototype.databaseKey, undefined);
+	});
 
-		it('Should not return any databaseKey', () => {
-			assert.deepStrictEqual(ProductImageModel.prototype.databaseKey, undefined);
-		});
+	it('Should return the table name', () => {
+		assert.deepStrictEqual(ProductImageModel.table, 'product-images');
+	});
 
-		it('Should return the table name', () => {
-			assert.deepStrictEqual(ProductImageModel.table, 'productImages');
-		});
-
-		it('Should return the uniqueIndexes', async () => {
-			assert.deepStrictEqual(ProductImageModel.uniqueIndexes, []);
-		});
+	it('Should return the indexes', async () => {
+		assert.deepStrictEqual(ProductImageModel.indexes, []);
 	});
 });
 `);

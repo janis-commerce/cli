@@ -18,14 +18,9 @@ const { ApiGet } = require('@janiscommerce/api-get');
 
 module.exports = class ProductImageGetApi extends ApiGet {
 
-	get fieldsToSelect() {
-		return undefined;
+	format(productImage) {
+		return productImage;
 	}
-
-	async format(record) {
-		return record;
-	}
-
 };
 `);
 		});
