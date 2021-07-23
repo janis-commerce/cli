@@ -7,6 +7,14 @@ and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.
 
 ## [Unreleased]
 
+## [1.7.1] - 2021-07-23
+### Added
+- `FullAuthorizer` or `NoClientAuthorizer` applied in serverless function
+- Correct `databaseKey` _getter_ for Models and test
+
+### Changed
+- Security prompt replaced with Auth prompt
+
 ## [1.7.0] - 2021-07-23
 ### Changed
 - Apis get, list, post and put optimized tests and sources
