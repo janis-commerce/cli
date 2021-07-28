@@ -7,6 +7,10 @@ and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.
 
 ## [Unreleased]
 
+## [1.7.2] - 2021-07-28
+### Fixed
+- Removed extra `.js` in require statement in model and event listener tests
+
 ## [1.7.1] - 2021-07-23
 ### Added
 - `FullAuthorizer` or `NoClientAuthorizer` applied in serverless function
