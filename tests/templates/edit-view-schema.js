@@ -84,25 +84,8 @@ describe('Templates', () => {
 							fields: [
 								{
 									name: 'status',
-									component: 'Select',
-									defaultValue: 'active',
-									componentAttributes: {
-										labelPrefix: 'common.status.',
-										translateLabels: true,
-										options: {
-											scope: 'local',
-											values: [
-												{
-													label: 'active',
-													value: 'active'
-												},
-												{
-													label: 'inactive',
-													value: 'inactive'
-												}
-											]
-										}
-									}
+									component: 'StatusSelector',
+									defaultValue: 'active'
 								}
 							]
 						}]
