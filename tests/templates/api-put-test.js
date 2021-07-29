@@ -45,6 +45,9 @@ const deleteProp = (object, prop) => {
 
 describe('Product Image Put Api', () => {
 
+	const id = '5dea9fc691240d00084083f8';
+	const apiPath = '/api/product-image/5dea9fc691240d00084083f8';
+
 	const productImage = {
 		status: 'active'
 	};
@@ -53,7 +56,7 @@ describe('Product Image Put Api', () => {
 		status: 'active'
 	};
 
-	ApiTest(ProductImagePutApi, '/api/product-image/5dea9fc691240d00084083f8', [
+	ApiTest(ProductImagePutApi, apiPath, [
 		{
 			description: 'Should return 400 if the required field \\'status\\' is not passed',
 			request: {
@@ -63,7 +66,10 @@ describe('Product Image Put Api', () => {
 				code: 400
 			},
 			before: sinon => {
-				sinon.stub(ProductImageModel.prototype);
+				sinon.spy(ProductImageModel.prototype, 'update');
+			},
+			after: (response, sinon) => {
+				sinon.assert.notCalled(ProductImageModel.prototype.update);
 			}
 		},
 		{
@@ -75,30 +81,28 @@ describe('Product Image Put Api', () => {
 				code: 500
 			},
 			before: sinon => {
-				sinon.stub(ProductImageModel.prototype);
-				ProductImageModel.prototype.update.rejects(new Error('Error updating'));
+				sinon.stub(ProductImageModel.prototype, 'update')
+					.rejects(new Error('Error updating'));
+			},
+			after: (response, sinon) => {
+				sinon.assert.calledOnceWithExactly(ProductImageModel.prototype.update, { ...productImageFormatted }, { id });
 			}
 		},
 		{
-			description: 'Should save the formatted productImage with all the fields',
+			description: 'Should update the productImage with all the formatted fields',
 			request: {
 				data: { ...productImage }
 			},
 			response: {
 				code: 200,
-				body: {
-					id: '5dea9fc691240d00084083f8'
-				}
+				body: { id }
 			},
 			before: sinon => {
-				sinon.stub(ProductImageModel.prototype);
-				ProductImageModel.prototype.update.returns('5dea9fc691240d00084083f8');
+				sinon.stub(ProductImageModel.prototype, 'update')
+					.resolves(1);
 			},
 			after: (response, sinon) => {
-				sinon.assert.calledOnce(ProductImageModel.prototype.update);
-				sinon.assert.calledWithExactly(ProductImageModel.prototype.update, { ...productImageFormatted }, {
-					id: '5dea9fc691240d00084083f8'
-				});
+				sinon.assert.calledOnceWithExactly(ProductImageModel.prototype.update, { ...productImageFormatted }, { id });
 			}
 		}
 	]);

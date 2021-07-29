@@ -7,6 +7,23 @@ and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.
 
 ## [Unreleased]
 
+## [1.7.2] - 2021-07-28
+### Fixed
+- Removed extra `.js` in require statement in model and event listener tests
+
+## [1.7.1] - 2021-07-23
+### Added
+- `FullAuthorizer` or `NoClientAuthorizer` applied in serverless function
+- Correct `databaseKey` _getter_ for Models and test
+
+### Changed
+- Security prompt replaced with Auth prompt
+
+## [1.7.0] - 2021-07-23
+### Changed
+- Apis get, list, post and put optimized tests and sources
+- Model and model tests better templates and tests
+
 ## [1.6.0] - 2020-10-07
 ### Added
 - Header in Edit schema

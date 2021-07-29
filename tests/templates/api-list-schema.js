@@ -127,11 +127,7 @@ describe('Templates', () => {
 				entityPlural: 'productImages',
 				sortableFields: ['dateCreated'],
 				availableFilters: ['id', 'isDefault', 'status', 'userCreated', 'dateCreated'],
-				security: [{
-					ApiKey: [],
-					ApiSecret: [],
-					JanisClient: []
-				}]
+				auth: 'full'
 			});
 
 			assert.deepStrictEqual(result, {

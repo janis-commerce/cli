@@ -65,31 +65,22 @@ describe('Product Image List Api', () => {
 
 	ApiTest(ProductImageListApi, '/api/product-image', [
 		{
-			description: 'Should pass the correct params to the model',
-			request: {},
-			response: {},
-			before: sinon => {
-				sinon.stub(ProductImageModel.prototype, 'get');
-				ProductImageModel.prototype.get.resolves([]);
-			},
-			after: (response, sinon) => {
-				sinon.assert.calledOnce(ProductImageModel.prototype.get);
-				sinon.assert.calledWithExactly(ProductImageModel.prototype.get, {
-					page: 1,
-					limit: 60
-				});
-			}
-		},
-		{
 			description: 'Should succeed with a 200 and an empty array if no productImages are found',
 			request: {},
 			response: {
 				code: 200,
-				body: []
+				body: [],
+				headers: { 'x-janis-total': 0 }
 			},
 			before: sinon => {
-				sinon.stub(ProductImageModel.prototype, 'get');
-				ProductImageModel.prototype.get.resolves([]);
+				sinon.stub(ProductImageModel.prototype, 'get')
+					.resolves([]);
+			},
+			after: (response, sinon) => {
+				sinon.assert.calledOnceWithExactly(ProductImageModel.prototype.get, {
+					page: 1,
+					limit: 60
+				});
 			}
 		},
 		{
@@ -98,16 +89,22 @@ describe('Product Image List Api', () => {
 			response: {
 				code: 200,
 				body: [{ ...productImageFormatted }],
-				headers: {
-					'x-janis-total': 1
-				}
+				headers: { 'x-janis-total': 1 }
 			},
 			before: sinon => {
-				sinon.stub(ProductImageModel.prototype, 'get');
-				ProductImageModel.prototype.get.resolves([{ ...productImage }]);
+				sinon.stub(ProductImageModel.prototype, 'get')
+					.resolves([{ ...productImage }]);
 
-				sinon.stub(ProductImageModel.prototype, 'getTotals');
-				ProductImageModel.prototype.getTotals.returns({ total: 1 });
+				sinon.stub(ProductImageModel.prototype, 'getTotals')
+					.resolves({ total: 1 });
+			},
+			after: (response, sinon) => {
+				sinon.assert.calledOnceWithExactly(ProductImageModel.prototype.get, {
+					page: 1,
+					limit: 60
+				});
+
+				sinon.assert.calledOnceWithExactly(ProductImageModel.prototype.getTotals);
 			}
 		}
 	]);
@@ -137,14 +134,17 @@ describe('Product Image List Api', () => {
 					}
 				}
 			},
-			response: {},
+			response: {
+				code: 200,
+				body: [],
+				headers: { 'x-janis-total': 0 }
+			},
 			before: sinon => {
-				sinon.stub(ProductImageModel.prototype, 'get');
-				ProductImageModel.prototype.get.resolves([]);
+				sinon.stub(ProductImageModel.prototype, 'get')
+					.resolves([]);
 			},
 			after: (response, sinon) => {
-				sinon.assert.calledOnce(ProductImageModel.prototype.get);
-				sinon.assert.calledWithExactly(ProductImageModel.prototype.get, {
+				sinon.assert.calledOnceWithExactly(ProductImageModel.prototype.get, {
 					page: 1,
 					limit: 60,
 					filters: {
@@ -168,14 +168,17 @@ describe('Product Image List Api', () => {
 					sortBy: field
 				}
 			},
-			response: {},
+			response: {
+				code: 200,
+				body: [],
+				headers: { 'x-janis-total': 0 }
+			},
 			before: sinon => {
-				sinon.stub(ProductImageModel.prototype, 'get');
-				ProductImageModel.prototype.get.resolves([]);
+				sinon.stub(ProductImageModel.prototype, 'get')
+					.resolves([]);
 			},
 			after: (response, sinon) => {
-				sinon.assert.calledOnce(ProductImageModel.prototype.get);
-				sinon.assert.calledWithExactly(ProductImageModel.prototype.get, {
+				sinon.assert.calledOnceWithExactly(ProductImageModel.prototype.get, {
 					page: 1,
 					limit: 60,
 					order: {
@@ -194,14 +197,17 @@ describe('Product Image List Api', () => {
 						sortDirection: 'desc'
 					}
 				},
-				response: {},
+				response: {
+					code: 200,
+					body: [],
+					headers: { 'x-janis-total': 0 }
+				},
 				before: sinon => {
-					sinon.stub(ProductImageModel.prototype, 'get');
-					ProductImageModel.prototype.get.resolves([]);
+					sinon.stub(ProductImageModel.prototype, 'get')
+						.resolves([]);
 				},
 				after: (response, sinon) => {
-					sinon.assert.calledOnce(ProductImageModel.prototype.get);
-					sinon.assert.calledWithExactly(ProductImageModel.prototype.get, {
+					sinon.assert.calledOnceWithExactly(ProductImageModel.prototype.get, {
 						page: 1,
 						limit: 60,
 						order: {

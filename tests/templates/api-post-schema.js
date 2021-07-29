@@ -61,11 +61,7 @@ describe('Templates', () => {
 		it('Should return the schema with security', () => {
 			const result = template({
 				entity: 'productImage',
-				security: [{
-					ApiKey: [],
-					ApiSecret: [],
-					JanisClient: []
-				}]
+				auth: 'full'
 			});
 
 			assert.deepStrictEqual(result, {

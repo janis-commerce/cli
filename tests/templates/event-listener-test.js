@@ -35,7 +35,7 @@ describe('Templates', () => {
 
 const EventListenerTest = require('@janiscommerce/event-listener-test');
 
-const MyServiceProductImageCreatedListener = require('../../../../src/event-listeners/my-service/product-image/created.js');
+const MyServiceProductImageCreatedListener = require('../../../../src/event-listeners/my-service/product-image/created');
 
 describe('My Service Product Image Created Listener', async () => {
 
@@ -90,7 +90,7 @@ describe('My Service Product Image Created Listener', async () => {
 
 const EventListenerTest = require('@janiscommerce/event-listener-test');
 
-const MyServiceProductImageCreatedListener = require('../../../../src/event-listeners/my-service/product-image/created.js');
+const MyServiceProductImageCreatedListener = require('../../../../src/event-listeners/my-service/product-image/created');
 
 describe('My Service Product Image Created Listener', async () => {
 
@@ -135,7 +135,7 @@ describe('My Service Product Image Created Listener', async () => {
 
 const EventListenerTest = require('@janiscommerce/event-listener-test');
 
-const MyServiceProductImageCreatedListener = require('../../../../src/event-listeners/my-service/product-image/created.js');
+const MyServiceProductImageCreatedListener = require('../../../../src/event-listeners/my-service/product-image/created');
 
 describe('My Service Product Image Created Listener', async () => {
 
@@ -180,7 +180,7 @@ describe('My Service Product Image Created Listener', async () => {
 
 const EventListenerTest = require('@janiscommerce/event-listener-test');
 
-const MyServiceProductImageCreatedListener = require('../../../../src/event-listeners/my-service/product-image/created.js');
+const MyServiceProductImageCreatedListener = require('../../../../src/event-listeners/my-service/product-image/created');
 
 describe('My Service Product Image Created Listener', async () => {
 

@@ -58,10 +58,7 @@ describe('Templates', () => {
 				permissions: ['s:n:m'],
 				tags: ['MySuperTag'],
 				summary: 'The best API',
-				security: [{
-					ApiKey: [],
-					ApiSecret: []
-				}],
+				auth: 'core',
 				parameters: [{
 					in: 'header',
 					name: 'x-foo'

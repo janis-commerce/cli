@@ -22,10 +22,11 @@ describe('Templates', () => {
 			process.env = env;
 		});
 
-		it('Should return the source code as a string', () => {
+		it('Should return the source code as a string for client models', () => {
 			const result = template({
 				entity: 'productImage',
-				entityPlural: 'productImages'
+				entityPlural: 'productImages',
+				auth: 'full'
 			});
 
 			assert.deepStrictEqual(result, `'use strict';
@@ -35,9 +36,40 @@ const Model = require('@janiscommerce/model');
 module.exports = class ProductImage extends Model {
 
 	static get table() {
-		return 'productImages';
+		return 'product-images';
 	}
 
+	static get indexes() {
+		return [];
+	}
+};
+`);
+		});
+
+		it('Should return the source code as a string for core models', () => {
+			const result = template({
+				entity: 'productImage',
+				entityPlural: 'productImages',
+				auth: 'core'
+			});
+
+			assert.deepStrictEqual(result, `'use strict';
+
+const Model = require('@janiscommerce/model');
+
+module.exports = class ProductImage extends Model {
+
+	get databaseKey() {
+		return 'core';
+	}
+
+	static get table() {
+		return 'product-images';
+	}
+
+	static get indexes() {
+		return [];
+	}
 };
 `);
 		});

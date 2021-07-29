@@ -38,7 +38,6 @@ module.exports = class ProductImageListApi extends ApiListData {
 	async formatRows(rows) {
 		return rows;
 	}
-
 };
 `);
 		});
@@ -84,7 +83,6 @@ module.exports = class ProductImageListApi extends ApiListData {
 	async formatRows(rows) {
 		return rows;
 	}
-
 };
 `);
 		});

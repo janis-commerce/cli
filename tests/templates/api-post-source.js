@@ -28,10 +28,9 @@ module.exports = class ProductImagePostApi extends ApiSaveData {
 		return mainStruct;
 	}
 
-	format(record) {
-		return record;
+	format(productImage) {
+		return productImage;
 	}
-
 };
 `);
 		});

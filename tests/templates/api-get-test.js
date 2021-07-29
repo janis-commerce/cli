@@ -41,6 +41,9 @@ const ProductImageModel = require('../../../src/models/product-image');
 
 describe('Product Image Get Api', () => {
 
+	const id = '5dea9fc691240d00084083f8';
+	const apiPath = '/api/product-image/5dea9fc691240d00084083f8';
+
 	const productImage = {
 		id: '5dea9fc691240d00084083f8',
 		status: 'active',
@@ -55,47 +58,61 @@ describe('Product Image Get Api', () => {
 		userCreated: '5dea9fc691240d00084083f9'
 	};
 
-	ApiTest(ProductImageGetApi, '/api/product-image/5dea9fc691240d00084083f8', [
+	ApiTest(ProductImageGetApi, apiPath, [
 		{
-			description: 'Should fail with a 404 if no productImages are found',
+			description: 'Should fail with a 404 if no productImage are found',
 			request: {},
 			response: {
 				code: 404
 			},
 			before: sinon => {
-				sinon.stub(ProductImageModel.prototype, 'get');
-				ProductImageModel.prototype.get.resolves([]);
-			}
-		},
-		{
-			description: 'Should pass the correct params to the model',
-			request: {},
-			response: {},
-			before: sinon => {
-				sinon.stub(ProductImageModel.prototype, 'get');
-				ProductImageModel.prototype.get.resolves([{ ...productImage }]);
+				sinon.stub(ProductImageModel.prototype, 'get')
+					.resolves([]);
 			},
 			after: (response, sinon) => {
-				sinon.assert.calledOnce(ProductImageModel.prototype.get);
-				sinon.assert.calledWithExactly(ProductImageModel.prototype.get, {
-					filters: {
-						id: '5dea9fc691240d00084083f8'
-					},
+				sinon.assert.calledOnceWithExactly(ProductImageModel.prototype.get, {
+					filters: { id },
 					page: 1,
 					limit: 1
 				});
 			}
 		},
 		{
-			description: 'Should return the formatted object if the productImage is found',
+			description: 'Should return 200 with the formatted object if the productImage is found',
 			request: {},
 			response: {
 				code: 200,
 				body: { ...productImageFormatted }
 			},
 			before: sinon => {
-				sinon.stub(ProductImageModel.prototype, 'get');
-				ProductImageModel.prototype.get.resolves([{ ...productImage }]);
+				sinon.stub(ProductImageModel.prototype, 'get')
+					.resolves([{ ...productImage }]);
+			},
+			after: (response, sinon) => {
+				sinon.assert.calledOnceWithExactly(ProductImageModel.prototype.get, {
+					filters: { id },
+					page: 1,
+					limit: 1
+				});
+			}
+		},
+		{
+			description: 'Should return 500 when the model fails',
+			request: {},
+			response: {
+				code: 500,
+				body: { message: 'Some DB Error' }
+			},
+			before: sinon => {
+				sinon.stub(ProductImageModel.prototype, 'get')
+					.rejects(new Error('Some DB Error'))
+			},
+			after: (response, sinon) => {
+				sinon.assert.calledOnceWithExactly(ProductImageModel.prototype.get, {
+					filters: { id },
+					page: 1,
+					limit: 1
+				});
 			}
 		}
 	]);
