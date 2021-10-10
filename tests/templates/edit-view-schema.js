@@ -44,6 +44,7 @@ describe('Templates', () => {
 					{
 						name: 'mainFormSection',
 						title: 'main',
+						icon: 'summary',
 						rootComponent: 'MainForm',
 						fieldsGroup: [{
 							name: 'detail',
@@ -83,31 +84,20 @@ describe('Templates', () => {
 							fields: [
 								{
 									name: 'status',
-									component: 'Select',
-									defaultValue: 'active',
-									componentAttributes: {
-										labelPrefix: 'common.status.',
-										translateLabels: true,
-										options: {
-											scope: 'local',
-											values: [
-												{
-													label: 'active',
-													value: 'active'
-												},
-												{
-													label: 'inactive',
-													value: 'inactive'
-												}
-											]
-										}
-									}
+									component: 'StatusSelector',
+									defaultValue: 'active'
 								}
 							]
 						}]
 					},
 					{
+						name: 'comments',
+						icon: 'comment',
+						rootComponent: 'Comments'
+					},
+					{
 						name: 'logs',
+						icon: 'clock',
 						rootComponent: 'LogsBrowseSection'
 					}
 				]
