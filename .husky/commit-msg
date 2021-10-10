@@ -1,0 +1,37 @@
+#!/bin/bash
+
+#
+# Automatically adds branch name and branch description to every commit message.
+#
+RCol='\e[0m'	# Text Reset
+Red='\e[0;31m'	# Red
+
+NAME=$(git branch | grep '*' | sed 's/* //')
+DESCRIPTION=$(git config branch."$NAME".description)
+
+COMMIT_MESSAGE_FILE=$1
+
+if [ -z $COMMIT_MESSAGE_FILE ] || [ ! -f $COMMIT_MESSAGE_FILE ]; then
+	echo "Commit message file not found: $COMMIT_MESSAGE_FILE"
+	exit 1
+fi
+
+FIRST_LINE=$(head -n 1 $COMMIT_MESSAGE_FILE)
+FIRST_LETTER=${FIRST_LINE:0:1}
+
+if [ -z "$FIRST_LINE" ] || [ "$FIRST_LETTER" == "#" ]; then
+	echo -e "\n${Red}Empty commit message file. You need to set your commit message!${RCol}\n"
+	exit 1
+fi
+
+grep -q '\['$NAME'\]' $COMMIT_MESSAGE_FILE
+
+if [[ $? -ne 0 ]]; then
+	echo -n "[$NAME]"' - '|cat - "$COMMIT_MESSAGE_FILE" > /tmp/out && mv /tmp/out "$COMMIT_MESSAGE_FILE"
+
+	if [ -n "$DESCRIPTION" ]
+	then
+	   echo "" >> "$COMMIT_MESSAGE_FILE"
+	   echo $DESCRIPTION >> "$COMMIT_MESSAGE_FILE"
+	fi
+fi
