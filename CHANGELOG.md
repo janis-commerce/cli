@@ -7,6 +7,11 @@ and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.
 
 ## [Unreleased]
 
+## [1.7.3] - 2021-10-10
+### Changed
+- Updates in views sections, using `StatusSelector` component
+- Updated dependencies
+
 ## [1.7.2] - 2021-07-28
 ### Fixed
 - Removed extra `.js` in require statement in model and event listener tests
