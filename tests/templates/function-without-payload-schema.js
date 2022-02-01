@@ -2,10 +2,10 @@
 
 const assert = require('assert');
 
-const template = require('../../lib/templates/function-with-payload-schema');
+const template = require('../../lib/templates/function-without-payload-schema');
 
 describe('Templates', () => {
-	describe('Function with payload schema', () => {
+	describe('Function without payload schema', () => {
 
 		it('Should return the function schema ', () => {
 			const result = template({
@@ -20,13 +20,6 @@ describe('Templates', () => {
 							'x-janis-method': undefined,
 							'x-janis-permissions': [],
 							operationId: 'publish-products',
-							requestBody: {
-								description: 'publish-products',
-								required: true,
-								content: {
-									'application/json': {}
-								}
-							},
 							summary: 'publish-products',
 							tags: [
 								'Functions'
