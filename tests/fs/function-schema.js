@@ -37,33 +37,33 @@ describe('FS', () => {
 
 		describe('writeSchema()', () => {
 			it('Should write the correct file with the content (with user defined path)', async () => {
-				await writeSchema('PublishProducts', 'publish-products', 'content');
+				await writeSchema('PublishProducts', 'PublishProducts', 'content');
 
 				sinon.assert.calledOnce(fs.outputFile);
-				sinon.assert.calledWithExactly(fs.outputFile, path.join(cwd, baseDir, 'publish-products', 'publish-products.yml'), 'content');
+				sinon.assert.calledWithExactly(fs.outputFile, path.join(cwd, baseDir, 'PublishProducts', 'PublishProducts.yml'), 'content');
 			});
 
 			it('Should write the correct file with the content (with default path)', async () => {
-				await writeSchema('', 'publish-products', 'content');
+				await writeSchema('', 'PublishProducts', 'content');
 
 				sinon.assert.calledOnce(fs.outputFile);
-				sinon.assert.calledWithExactly(fs.outputFile, path.join(cwd, baseDir, 'publish-products.yml'), 'content');
+				sinon.assert.calledWithExactly(fs.outputFile, path.join(cwd, baseDir, 'PublishProducts.yml'), 'content');
 			});
 		});
 
 		describe('openSchema()', () => {
 			it('Should open the correct file (with user defined path)', async () => {
 
-				await openSchema('PublishProducts', 'publish-product', 'content');
+				await openSchema('PublishProducts', 'PublishProducts', 'content');
 
-				sinon.assert.calledOnceWithExactly(open.openFile, path.join(cwd, baseDir, 'publish-products', 'publish-product'));
+				sinon.assert.calledOnceWithExactly(open.openFile, path.join(cwd, baseDir, 'PublishProducts', 'PublishProducts'));
 			});
 
 			it('Should open the correct file (with default path)', async () => {
 
-				await openSchema('', 'publish-product', 'content');
+				await openSchema('', 'PublishProducts', 'content');
 
-				sinon.assert.calledOnceWithExactly(open.openFile, path.join(cwd, baseDir, 'publish-product'));
+				sinon.assert.calledOnceWithExactly(open.openFile, path.join(cwd, baseDir, 'PublishProducts'));
 			});
 		});
 	});

@@ -33,16 +33,17 @@ describe('Templates', () => {
 
 				assert.deepStrictEqual(result, `'use strict';
 
-  const { Handler, LambdaWithClientAndPayload } = require('@janiscommerce/lambda');
+const { Handler, LambdaWithClientAndPayload } = require('@janiscommerce/lambda');
 
-  class PublishProducts extends LambdaWithClientAndPayload {
-  
-    async process() {
-  
-    }
-  }
-  
-  module.exports.handler = (...args) => Handler.handle(PublishProducts, ...args);`);
+class PublishProducts extends LambdaWithClientAndPayload {
+
+	async process() {
+		// Process something
+	}
+}
+
+module.exports.handler = (...args) => Handler.handle(PublishProducts, ...args);
+`);
 			});
 		});
 
@@ -57,16 +58,17 @@ describe('Templates', () => {
 
 				assert.deepStrictEqual(result, `'use strict';
 
-  const { Handler, LambdaWithPayload } = require('@janiscommerce/lambda');
+const { Handler, LambdaWithPayload } = require('@janiscommerce/lambda');
 
-  class PublishProducts extends LambdaWithPayload {
-  
-    async process() {
-  
-    }
-  }
-  
-  module.exports.handler = (...args) => Handler.handle(PublishProducts, ...args);`);
+class PublishProducts extends LambdaWithPayload {
+
+	async process() {
+		// Process something
+	}
+}
+
+module.exports.handler = (...args) => Handler.handle(PublishProducts, ...args);
+`);
 			});
 		});
 
@@ -81,16 +83,17 @@ describe('Templates', () => {
 
 				assert.deepStrictEqual(result, `'use strict';
 
-  const { Handler, Lambda } = require('@janiscommerce/lambda');
+const { Handler, Lambda } = require('@janiscommerce/lambda');
 
-  class PublishProducts extends Lambda {
-  
-    async process() {
-  
-    }
-  }
-  
-  module.exports.handler = (...args) => Handler.handle(PublishProducts, ...args);`);
+class PublishProducts extends Lambda {
+
+	async process() {
+		// Process something
+	}
+}
+
+module.exports.handler = (...args) => Handler.handle(PublishProducts, ...args);
+`);
 			});
 		});
 	});

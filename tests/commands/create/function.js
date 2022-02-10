@@ -75,7 +75,7 @@ describe('Commands', () => {
 
 				fs.pathExists.resolves(false);
 
-				prompts.inject(['PublishProducts', 'publish-products', true, true]);
+				prompts.inject(['PublishProducts', true, 'publish-products', true, true]);
 
 				await handler({});
 
@@ -86,7 +86,18 @@ describe('Commands', () => {
 
 				fs.pathExists.resolves(false);
 
-				prompts.inject(['PublishProducts', 'publish-products', true, false]);
+				prompts.inject(['PublishProducts', true, 'publish-products', false]);
+
+				await handler({});
+
+				sinon.assert.callCount(fs.outputFile, 3);
+			});
+
+			it('Should write and open all the files (with default path)', async () => {
+
+				fs.pathExists.resolves(false);
+
+				prompts.inject(['PublishProducts', false, false]);
 
 				await handler({});
 
@@ -99,7 +110,7 @@ describe('Commands', () => {
 				fs.readFile.resolves('[]');
 				YAML.load.resolves([]);
 
-				prompts.inject(['PublishProducts', 'publish-products', true, true]);
+				prompts.inject(['PublishProducts', true, 'publish-products', true, true]);
 
 				await handler({});
 

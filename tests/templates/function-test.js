@@ -25,37 +25,38 @@ describe('Templates', () => {
 		it('Should return the test source code as a string', () => {
 			const result = template({
 				functionName: 'PublishProducts',
-				functionPath: 'publish-products'
+				functionPath: 'PublishProducts'
 			});
 
 			assert.deepStrictEqual(result, `'use strict';
 
-  const sinon = require('sinon');
-  
-  const { handler: PublishProducts } = require('/var/www/root-path/src/lambda/publish-products/publish-products.js');
-  
-  describe('Function {functionName}', () => {
-  
-    afterEach(() => {
-      sinon.restore();
-    });
-  
-    context('When event is invalid', () => {
-  
-      beforeEach(() => {
-        // some spies maybe?
-      });
-  
-      afterEach(() => {
-        // some notCalled maybe?
-      });
-    });
-  
-    context('When event is valid', () => {
-  
-      const validEvent = {};
-    });
-  });`);
+const sinon = require('sinon');
+
+const { handler: PublishProducts } = require('/var/www/root-path/src/lambda/PublishProducts/PublishProducts.js');
+
+describe('Function PublishProducts', () => {
+
+	afterEach(() => {
+		sinon.restore();
+	});
+
+	context('When event is invalid', () => {
+
+		beforeEach(() => {
+			// Some spies maybe?
+		});
+
+		afterEach(() => {
+			// Some notCalled maybe?
+		});
+	});
+
+	context('When event is valid', () => {
+
+		const validEvent = {};
+	});
+});
+`);
 		});
 	});
 });

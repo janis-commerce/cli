@@ -37,27 +37,27 @@ describe('FS', () => {
 
 		describe('writeTest()', () => {
 			it('Should write the correct file with the content', async () => {
-				await writeTest('PublishProducts', 'publish-products', 'content');
+				await writeTest('PublishProducts', 'PublishProducts', 'content');
 
 				sinon.assert.calledOnce(fs.outputFile);
-				sinon.assert.calledWithExactly(fs.outputFile, path.join(cwd, 'tests/lambda', 'publish-products', 'publish-products.js'), 'content');
+				sinon.assert.calledWithExactly(fs.outputFile, path.join(cwd, 'tests/lambda', 'PublishProducts', 'PublishProducts.js'), 'content');
 			});
 		});
 
 		describe('getFilePath()', () => {
 			it('Should return the correct file path', async () => {
-				const filePath = await getFilePath('PublishProducts', 'publish-products', 'content');
+				const filePath = await getFilePath('PublishProducts', 'PublishProducts', 'content');
 
-				assert.strictEqual(filePath, path.join(cwd, 'tests/lambda', 'publish-products', 'publish-products.js'));
+				assert.strictEqual(filePath, path.join(cwd, 'tests/lambda', 'PublishProducts', 'PublishProducts.js'));
 			});
 		});
 
 		describe('openTest()', () => {
 			it('Should open the correct file', async () => {
 
-				await openTest('PublishProducts', 'publish-products', 'content');
+				await openTest('PublishProducts', 'PublishProducts', 'content');
 
-				sinon.assert.calledOnceWithExactly(open.openFile, path.join(cwd, 'tests/lambda', 'publish-products', 'publish-products.js'));
+				sinon.assert.calledOnceWithExactly(open.openFile, path.join(cwd, 'tests/lambda', 'PublishProducts', 'PublishProducts.js'));
 			});
 		});
 	});
