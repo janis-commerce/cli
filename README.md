@@ -38,6 +38,7 @@ Commands:
   janis-cli create-api             Create a new API
   janis-cli create-crud            Create an entity CRUD operations
   janis-cli create-event-listener  Create a new Event Listener
+  janis-cli create-function        Create a new Lambda Function
 ```
 
 To get more information about command arguments, just run `janis-cli <command> --help`.

@@ -75,7 +75,7 @@ describe('Commands', () => {
 
 				fs.pathExists.resolves(false);
 
-				prompts.inject(['PublishProducts', true, 'publish-products', true, true]);
+				prompts.inject(['PublishProducts', false, 'publish-products', true, true]);
 
 				await handler({});
 
@@ -86,7 +86,7 @@ describe('Commands', () => {
 
 				fs.pathExists.resolves(false);
 
-				prompts.inject(['PublishProducts', true, 'publish-products', false]);
+				prompts.inject(['PublishProducts', false, 'publish-products', false]);
 
 				await handler({});
 
@@ -97,7 +97,7 @@ describe('Commands', () => {
 
 				fs.pathExists.resolves(false);
 
-				prompts.inject(['PublishProducts', false, false]);
+				prompts.inject(['PublishProducts', true, true, true]);
 
 				await handler({});
 
@@ -110,7 +110,7 @@ describe('Commands', () => {
 				fs.readFile.resolves('[]');
 				YAML.load.resolves([]);
 
-				prompts.inject(['PublishProducts', true, 'publish-products', true, true]);
+				prompts.inject(['PublishProducts', false, 'publish-products', true, true]);
 
 				await handler({});
 
