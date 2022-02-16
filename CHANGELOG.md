@@ -6,7 +6,10 @@ The format is based on [Keep a Changelog](http://keepachangelog.com/en/1.0.0/)
 and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.html).
 
 ## [Unreleased]
-- `create-function` command added
+
+## [1.8.0] - 2022-02-16
+### Added
+- New `create-function` command
 
 ## [1.7.3] - 2021-10-10
 ### Changed
